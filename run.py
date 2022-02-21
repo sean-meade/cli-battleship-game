@@ -12,19 +12,22 @@ class PlayerBoard:
         letters = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
         for line in range(len(self.board)):
             if line == 0:
-                print('    ___________________')
-                print(letters[line] + "  " + "|" + ' '.join(self.board[line]) + "|")
+                print('    ________________________________')
+                print('   |                                |')
+                print(letters[line] + "  " + "|  " + '  '.join(self.board[line]) + "  |")
+                print('   |                                |')
             elif line == 9:
-                print(letters[line] + "  " + "|" + ' '.join(self.board[line]) + "|")
-                print('    \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305')
-                print("    0 1 2 3 4 5 6 7 8 9")
+                print(letters[line] + "  " + "|  " + '  '.join(self.board[line]) + "  |")
+                print('   |________________________________|')
+                print("      0  1  2  3  4  5  6  7  8  9")
             else:
-                print(letters[line] + "  " + "|" + ' '.join(self.board[line]) + "|")
+                print(letters[line] + "  " + "|  " + '  '.join(self.board[line]) + "  |")
+                print('   |                                |')
 
 player_one = PlayerBoard("~")
 
 player_one.print_board()
 
-computer = PlayerBoard("o")
+computer = PlayerBoard("O")
 
 computer.print_board()
