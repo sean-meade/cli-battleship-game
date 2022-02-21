@@ -9,15 +9,17 @@ class PlayerBoard:
 
     def print_board(self):
         """ print the players board to the screen """
+        letters = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
         for line in range(len(self.board)):
             if line == 0:
-                print(' ___________________')
-                print("|" + ' '.join(self.board[line]) + "|")
+                print('    ___________________')
+                print(letters[line] + "  " + "|" + ' '.join(self.board[line]) + "|")
             elif line == 9:
-                print("|" + ' '.join(self.board[line]) + "|")
-                print(' \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305')
+                print(letters[line] + "  " + "|" + ' '.join(self.board[line]) + "|")
+                print('    \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305 \u0305')
+                print("    0 1 2 3 4 5 6 7 8 9")
             else:
-                print("|" + ' '.join(self.board[line]) + "|")
+                print(letters[line] + "  " + "|" + ' '.join(self.board[line]) + "|")
 
 player_one = PlayerBoard("~")
 
