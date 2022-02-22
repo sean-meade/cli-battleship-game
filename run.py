@@ -44,43 +44,56 @@ def place_ship(players_board, starting_point, direction, size):
 
     x_and_y = list(starting_point)
 
-    x_direction = int(x_and_y[0])
-    y_direction = 9 - (ord(x_and_y[1]) - 97)
-    # print("x", x_direction, "y", y_direction, "x and y", x_and_y)
+    x_coords = int(x_and_y[0])
+    y_coords = 9 - (ord(x_and_y[1]) - 97)
+    # print("x", x_coords, "y", y_coords, "x and y", x_and_y)
 
     direction_upper = direction.upper()
 
     match direction_upper:
         case "UP":
-            for y_up in range(y_direction - (size - 1), y_direction + 1):
-                players_board.board[y_up][x_direction] = SHIP
+            if y_coords - (size - 1) < 0:
+                print("ship won't fit on board try again")
+                main()
+            for y_up in range(y_coords - (size - 1), y_coords + 1):
+                players_board.board[y_up][x_coords] = SHIP
 
         case "DOWN":
-            for y_down in range(y_direction, y_direction + size):
-                players_board.board[y_down][x_direction] = SHIP
+            if y_coords + size > 9:
+                print("ship won't fit on board try again")
+                main()
+            for y_down in range(y_coords, y_coords + size):
+                players_board.board[y_down][x_coords] = SHIP
 
         case "RIGHT":
-            for x_right in range(x_direction, x_direction + size):
-                players_board.board[y_direction][x_right] = SHIP
+            if x_coords + size > 9:
+                print("ship won't fit on board try again")
+                main()
+            for x_right in range(x_coords, x_coords + size):
+                players_board.board[y_coords][x_right] = SHIP
 
         case "LEFT":
-            for x_left in range(x_direction  - (size - 1), x_direction + 1):
-                players_board.board[y_direction][x_left] = SHIP
+            if x_coords  - (size - 1) < 0:
+                print("ship won't fit on board try again")
+                main()
+            for x_left in range(x_coords  - (size - 1), x_coords + 1):
+                players_board.board[y_coords][x_left] = SHIP
 
     players_board.print_board()
+
+# def check_if_ship_fits(players_board, starting_point, direction, size):
+    
 
 
 def main():
     """
     Main function ran on execution of file
     """
-    name = input("Please give your username:\n")
-    player_one = PlayerBoard("~", name)
+    # name = input("Please give your username:\n")
+    player_one = PlayerBoard("~", "sean")
     starting_point = input("Choose starting point of ship (e.g. 6f, 7y, 3i):\n")
     direction = input("Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n")
-    place_ship(player_one, starting_point, direction, 2)
-
-    
+    place_ship(player_one, starting_point, direction, 5)
 
     # computer = PlayerBoard("O")
 
