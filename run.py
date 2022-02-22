@@ -4,19 +4,20 @@ class PlayerBoard:
     A class that creates a players side of the board and holds it's ships, hits and misses
     """
     
-    def __init__(self, player, name = "comp"):
-        self.board = [["w"] * 10,
-                      ["g"] * 10,
-                      ["h"] * 10,
-                      ["j"] * 10,
-                      ["k"] * 10,
-                      ["l"] * 10,
-                      ["a"] * 10,
-                      ["s"] * 10,
-                      ["d"] * 10,
-                      ["r"] * 10,]
-        # [[player] * 10] * 10
+    def __init__(self, symbol, name = "comp"):
+        self.board = [[symbol] * 10,
+                      [symbol] * 10,
+                      [symbol] * 10,
+                      [symbol] * 10,
+                      [symbol] * 10,
+                      [symbol] * 10,
+                      [symbol] * 10,
+                      [symbol] * 10,
+                      [symbol] * 10,
+                      [symbol] * 10,]
+                    #   [[symbol] * 10] * 10
         self.name = name
+        self.symbol = symbol
 
     def print_board(self):
         """ print the players board to the screen """
@@ -54,35 +55,74 @@ def place_ship(players_board, starting_point, direction, size):
         case "UP":
             if y_coords - (size - 1) < 0:
                 print("ship won't fit on board try again")
-                main()
+                choose_placement_of_ship(players_board, size)
+            spaces = []
             for y_up in range(y_coords - (size - 1), y_coords + 1):
-                players_board.board[y_up][x_coords] = SHIP
+                space = players_board.board[y_up][x_coords]
+                if space != players_board.symbol:
+                    print("You already have a ship there try again")
+                    players_board.print_board()
+                    choose_placement_of_ship(players_board, size)
+                spaces.append([y_up, x_coords])
+            for coords in spaces:
+                players_board.board[coords[0]][coords[1]] = SHIP
 
         case "DOWN":
             if y_coords + size > 9:
                 print("ship won't fit on board try again")
-                main()
+                choose_placement_of_ship(players_board, size)
+            spaces = []
             for y_down in range(y_coords, y_coords + size):
-                players_board.board[y_down][x_coords] = SHIP
+                space = players_board.board[y_down][x_coords]
+                if space != players_board.symbol:
+                    print("You already have a ship there try again")
+                    players_board.print_board()
+                    choose_placement_of_ship(players_board, size)
+                spaces.append([y_down, x_coords])
+            for coords in spaces:
+                players_board.board[coords[0]][coords[1]] = SHIP
 
         case "RIGHT":
             if x_coords + size > 9:
                 print("ship won't fit on board try again")
-                main()
+                choose_placement_of_ship(players_board, size)
+            spaces = []
             for x_right in range(x_coords, x_coords + size):
-                players_board.board[y_coords][x_right] = SHIP
-
+                space = players_board.board[y_coords][x_right]
+                if space != players_board.symbol:
+                    print("You already have a ship there try again")
+                    players_board.print_board()
+                    choose_placement_of_ship(players_board, size)
+                spaces.append([y_coords, x_right])
+            for coords in spaces:
+                players_board.board[coords[0]][coords[1]] = SHIP
+            
         case "LEFT":
             if x_coords  - (size - 1) < 0:
                 print("ship won't fit on board try again")
-                main()
+                choose_placement_of_ship(players_board, size)
+            spaces = []
             for x_left in range(x_coords  - (size - 1), x_coords + 1):
-                players_board.board[y_coords][x_left] = SHIP
+                space = players_board.board[y_coords][x_left]
+                if space != players_board.symbol:
+                    print("You already have a ship there try again")
+                    players_board.print_board()
+                    choose_placement_of_ship(players_board, size)
+                spaces.append([y_coords, x_left])    
+            for coords in spaces:
+                players_board.board[coords[0]][coords[1]] = SHIP
 
     players_board.print_board()
 
 # def check_if_ship_fits(players_board, starting_point, direction, size):
-    
+
+def choose_placement_of_ship(players_board, size):
+    """
+    Function that gets users placement options
+    """
+    starting_point = input("Choose starting point of ship (e.g. 6f, 7y, 3i):\n")
+    direction = input("Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n")
+    place_ship(players_board, starting_point, direction, size)
 
 
 def main():
@@ -91,9 +131,12 @@ def main():
     """
     # name = input("Please give your username:\n")
     player_one = PlayerBoard("~", "sean")
-    starting_point = input("Choose starting point of ship (e.g. 6f, 7y, 3i):\n")
-    direction = input("Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n")
-    place_ship(player_one, starting_point, direction, 5)
+
+    player_one.print_board()
+    ship_sizes = [3, 4, 5]
+
+    for size in ship_sizes:
+        choose_placement_of_ship(player_one, size)
 
     # computer = PlayerBoard("O")
 
