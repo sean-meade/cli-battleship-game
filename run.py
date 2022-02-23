@@ -1,4 +1,7 @@
+import random
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
+LETTERS = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
+
 class PlayerBoard:
     """
     A class that creates a players side of the board and holds it's ships, hits and misses
@@ -20,19 +23,19 @@ class PlayerBoard:
 
     def print_board(self):
         """ print the players board to the screen """
-        letters = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
+        
         for line in range(len(self.board)):
             if line == 0:
                 print('    ________________________________')
                 print('   |                                |')
-                print(letters[line] + "  " + "|  " + '  '.join(self.board[line]) + "  |")
+                print(LETTERS[line] + "  " + "|  " + '  '.join(self.board[line]) + "  |")
                 print('   |                                |')
             elif line == 9:
-                print(letters[line] + "  " + "|  " + '  '.join(self.board[line]) + "  |")
+                print(LETTERS[line] + "  " + "|  " + '  '.join(self.board[line]) + "  |")
                 print('   |________________________________|')
                 print("      0  1  2  3  4  5  6  7  8  9")
             else:
-                print(letters[line] + "  " + "|  " + '  '.join(self.board[line]) + "  |")
+                print(LETTERS[line] + "  " + "|  " + '  '.join(self.board[line]) + "  |")
                 print('   |                                |')
 
 
@@ -118,8 +121,15 @@ def choose_placement_of_ship(players_board, size):
     """
     Function that gets users placement options
     """
-    starting_point = input("Choose starting point of ship (e.g. 6f, 7y, 3i):\n")
-    direction = input("Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n")
+    directions = ["up", "down", "right", "left"]
+    
+    if players_board.name == "comp":
+        # Choose randomly
+        starting_point = str(random.randint(0, 9)) + LETTERS[random.randint(0, 9)]
+        direction = directions[random.randint(0, 3)]
+    else:
+        starting_point = input("Choose starting point of ship (e.g. 6f, 7y, 3i):\n")
+        direction = input("Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n")
     place_ship(players_board, starting_point, direction, size)
 
 def convert_coords(coords):
@@ -133,7 +143,7 @@ def convert_coords(coords):
 
     return x_coords, y_coords
 
-def attack(players_board, attack_coords):
+def attack(players_board, attack_coords = None):
     x_coords, y_coords = convert_coords(attack_coords)
 
     target = players_board.board[y_coords][x_coords]
@@ -152,17 +162,17 @@ def main():
     Main function ran on execution of file
     """
     # name = input("Please give your username:\n")
-    player_one = PlayerBoard("~", "sean")
+    computer = PlayerBoard(" ")
 
-    player_one.print_board()
-    ship_sizes = [3]
+    computer.print_board()
+    ship_sizes = [3, 2]
 
     for size in ship_sizes:
-        choose_placement_of_ship(player_one, size)
+        choose_placement_of_ship(computer, size)
 
     for attach in range(3):
         attack_coords = input("Choose coords to attack:\n")
-        attack(player_one, attack_coords)
+        attack(computer, attack_coords)
 
     # computer = PlayerBoard("O")
 
