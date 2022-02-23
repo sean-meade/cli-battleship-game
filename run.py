@@ -45,12 +45,6 @@ def place_ship(players_board, starting_point, direction, size):
 
     x_coords, y_coords = convert_coords(starting_point)
 
-    # x_and_y = list(starting_point)
-
-    # x_coords = int(x_and_y[0])
-    # y_coords = 9 - (ord(x_and_y[1]) - 97)
-    # print("x", x_coords, "y", y_coords, "x and y", x_and_y)
-
     direction_upper = direction.upper()
     spaces = []
     if direction_upper == "UP":
@@ -128,16 +122,30 @@ def choose_placement_of_ship(players_board, size):
     direction = input("Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n")
     place_ship(players_board, starting_point, direction, size)
 
-def convert_coords(starting_point):
+def convert_coords(coords):
     """
     Converts the number and letter given from the user into usable ints
     """
-    x_and_y = list(starting_point)
+    x_and_y = list(coords)
 
     x_coords = int(x_and_y[0])
     y_coords = 9 - (ord(x_and_y[1]) - 97)
 
     return x_coords, y_coords
+
+def attack(players_board, attack_coords):
+    x_coords, y_coords = convert_coords(attack_coords)
+
+    target = players_board.board[y_coords][x_coords]
+    print("target = ", target, players_board.symbol)
+    if target == players_board.symbol:
+        players_board.board[y_coords][x_coords] = "x"
+    elif target == "#":
+        players_board.board[y_coords][x_coords] = "X"
+    else:
+        print("Sorry you've already attacked there")
+
+    players_board.print_board()
 
 def main():
     """
@@ -147,10 +155,14 @@ def main():
     player_one = PlayerBoard("~", "sean")
 
     player_one.print_board()
-    ship_sizes = [3, 4, 5]
+    ship_sizes = [3]
 
     for size in ship_sizes:
         choose_placement_of_ship(player_one, size)
+
+    for attach in range(3):
+        attack_coords = input("Choose coords to attack:\n")
+        attack(player_one, attack_coords)
 
     # computer = PlayerBoard("O")
 
