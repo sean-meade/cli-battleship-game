@@ -1,6 +1,7 @@
 import random
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 LETTERS = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
+DIRECTIONS = ["up", "down", "right", "left"]
 
 class PlayerBoard:
     """
@@ -117,16 +118,20 @@ def place_ship(players_board, starting_point, direction, size):
 
     players_board.print_board()
 
+def comp_random_choice_of_coords():
+    coords = str(random.randint(0, 9)) + LETTERS[random.randint(0, 9)]
+
+    return coords
+
 def choose_placement_of_ship(players_board, size):
     """
     Function that gets users placement options
     """
-    directions = ["up", "down", "right", "left"]
     
     if players_board.name == "comp":
         # Choose randomly
-        starting_point = str(random.randint(0, 9)) + LETTERS[random.randint(0, 9)]
-        direction = directions[random.randint(0, 3)]
+        starting_point = comp_random_choice_of_coords()
+        direction = DIRECTIONS[random.randint(0, 3)]
     else:
         starting_point = input("Choose starting point of ship (e.g. 6f, 7y, 3i):\n")
         direction = input("Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n")
