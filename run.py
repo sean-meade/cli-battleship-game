@@ -43,10 +43,12 @@ def place_ship(players_board, starting_point, direction, size):
     """
     SHIP = "#"
 
-    x_and_y = list(starting_point)
+    x_coords, y_coords = convert_coords(starting_point)
 
-    x_coords = int(x_and_y[0])
-    y_coords = 9 - (ord(x_and_y[1]) - 97)
+    # x_and_y = list(starting_point)
+
+    # x_coords = int(x_and_y[0])
+    # y_coords = 9 - (ord(x_and_y[1]) - 97)
     # print("x", x_coords, "y", y_coords, "x and y", x_and_y)
 
     direction_upper = direction.upper()
@@ -126,6 +128,16 @@ def choose_placement_of_ship(players_board, size):
     direction = input("Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n")
     place_ship(players_board, starting_point, direction, size)
 
+def convert_coords(starting_point):
+    """
+    Converts the number and letter given from the user into usable ints
+    """
+    x_and_y = list(starting_point)
+
+    x_coords = int(x_and_y[0])
+    y_coords = 9 - (ord(x_and_y[1]) - 97)
+
+    return x_coords, y_coords
 
 def main():
     """
