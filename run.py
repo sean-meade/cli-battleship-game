@@ -148,11 +148,10 @@ def convert_coords(coords):
 
     return x_coords, y_coords
 
-def attack(players_board, attack_coords = None):
+def attack(players_board, attack_coords):
     x_coords, y_coords = convert_coords(attack_coords)
 
     target = players_board.board[y_coords][x_coords]
-    print("target = ", target, players_board.symbol)
     if target == players_board.symbol:
         players_board.board[y_coords][x_coords] = "x"
     elif target == "#":
@@ -176,8 +175,8 @@ def main():
         choose_placement_of_ship(computer, size)
 
     for attach in range(3):
-        attack_coords = input("Choose coords to attack:\n")
-        attack(computer, attack_coords)
+        # attack_coords = input("Choose coords to attack:\n")
+        attack(computer, comp_random_choice_of_coords())
 
     # computer = PlayerBoard("O")
 
