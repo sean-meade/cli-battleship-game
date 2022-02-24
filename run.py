@@ -21,6 +21,7 @@ class PlayerBoard:
                     #   [[symbol] * 10] * 10
         self.name = name
         self.symbol = symbol
+        self.hits = 0
 
     def print_board(self):
         """ print the players board to the screen """
@@ -46,21 +47,23 @@ def place_ship(players_board, starting_point, direction, size):
     and size of a ship and places it on the Board
     """
     SHIP = "#"
-
     x_coords, y_coords = convert_coords(starting_point)
 
     direction_upper = direction.upper()
     spaces = []
     if direction_upper == "UP":
         if y_coords - (size - 1) < 0:
-            print("ship won't fit on board try again")
+            if players_board.name != "comp":
+                print("ship won't fit on board try again")
             choose_placement_of_ship(players_board, size)
-            
+            return
         for y_up in range(y_coords - (size - 1), y_coords + 1):
+            # print("here 1:", players_board.name, y_up, x_coords)
             space = players_board.board[y_up][x_coords]
+            
             if space != players_board.symbol:
-                print("You already have a ship there try again")
-                players_board.print_board()
+                if players_board.name != "comp":
+                    print("You already have a ship there try again")
                 choose_placement_of_ship(players_board, size)
                 spaces = []
                 break
@@ -70,13 +73,17 @@ def place_ship(players_board, starting_point, direction, size):
 
     elif direction_upper == "DOWN":
         if y_coords + size > 9:
-            print("ship won't fit on board try again")
+            if players_board.name != "comp":
+                print("ship won't fit on board try again")
             choose_placement_of_ship(players_board, size)
+            return
         for y_down in range(y_coords, y_coords + size):
+            # print("here 2:", players_board.name, y_down, x_coords)
             space = players_board.board[y_down][x_coords]
+            
             if space != players_board.symbol:
-                print("You already have a ship there try again")
-                players_board.print_board()
+                if players_board.name != "comp":
+                    print("You already have a ship there try again")
                 choose_placement_of_ship(players_board, size)
                 spaces = []
                 break
@@ -86,13 +93,16 @@ def place_ship(players_board, starting_point, direction, size):
 
     elif direction_upper == "RIGHT":
         if x_coords + size > 9:
-            print("ship won't fit on board try again")
+            if players_board.name != "comp":
+                print("ship won't fit on board try again")
             choose_placement_of_ship(players_board, size)
+            return
         for x_right in range(x_coords, x_coords + size):
+            # print("here 3:", players_board.name, y_coords, x_right)
             space = players_board.board[y_coords][x_right]
             if space != players_board.symbol:
-                print("You already have a ship there try again")
-                players_board.print_board()
+                if players_board.name != "comp":
+                    print("You already have a ship there try again")
                 choose_placement_of_ship(players_board, size)
                 spaces = []
                 break
@@ -102,13 +112,16 @@ def place_ship(players_board, starting_point, direction, size):
 
     elif direction_upper == "LEFT":
         if x_coords  - (size - 1) < 0:
-            print("ship won't fit on board try again")
+            if players_board.name != "comp":
+                print("ship won't fit on board try again")
             choose_placement_of_ship(players_board, size)
+            return
         for x_left in range(x_coords  - (size - 1), x_coords + 1):
+            # print("here 4:", players_board.name, y_coords, x_left)
             space = players_board.board[y_coords][x_left]
             if space != players_board.symbol:
-                print("You already have a ship there try again")
-                players_board.print_board()
+                if players_board.name != "comp":
+                    print("You already have a ship there try again")
                 choose_placement_of_ship(players_board, size)
                 spaces = []
                 break
@@ -116,11 +129,14 @@ def place_ship(players_board, starting_point, direction, size):
         for coords in spaces:
             players_board.board[coords[0]][coords[1]] = SHIP
 
-    players_board.print_board()
+    
 
 def comp_random_choice_of_coords():
+    """
+    Choose random coords for comp
+    """
     coords = str(random.randint(0, 9)) + LETTERS[random.randint(0, 9)]
-
+    
     return coords
 
 def choose_placement_of_ship(players_board, size):
@@ -142,44 +158,65 @@ def convert_coords(coords):
     Converts the number and letter given from the user into usable ints
     """
     x_and_y = list(coords)
-
+    
     x_coords = int(x_and_y[0])
     y_coords = 9 - (ord(x_and_y[1]) - 97)
-
+    # print(x_coords, y_coords)
     return x_coords, y_coords
 
 def attack(players_board, attack_coords):
+    """
+    Attacks the opponents board
+    """
     x_coords, y_coords = convert_coords(attack_coords)
 
     target = players_board.board[y_coords][x_coords]
     if target == players_board.symbol:
-        players_board.board[y_coords][x_coords] = "x"
+        players_board.board[y_coords][x_coords] = "o"
     elif target == "#":
         players_board.board[y_coords][x_coords] = "X"
+        players_board.hits += 1
     else:
         print("Sorry you've already attacked there")
-
-    players_board.print_board()
 
 def main():
     """
     Main function ran on execution of file
     """
-    # name = input("Please give your username:\n")
-    computer = PlayerBoard(" ")
+    name = input("Please give your username:\n")
 
-    computer.print_board()
-    ship_sizes = [3, 2]
+    player = PlayerBoard("~", name)
+    computer = PlayerBoard(" ")
+    
+    ship_sizes = [3, 4, 5]
 
     for size in ship_sizes:
+        choose_placement_of_ship(player, size)
+        player.print_board()
         choose_placement_of_ship(computer, size)
 
-    for attach in range(3):
-        # attack_coords = input("Choose coords to attack:\n")
-        attack(computer, comp_random_choice_of_coords())
+    computer.print_board()
+    player.print_board()
 
-    # computer = PlayerBoard("O")
+    current_player = player
+    print("player name", current_player.name)
+    while(player.hits < 3 or computer.hits < 3):
+        
+        if current_player.name == "comp":
+            attack(player, comp_random_choice_of_coords())
+            player.print_board()
+            current_player = player
+            
+        else:
+            attack_coords = input("Choose attach coords (e.g. 3e, 7f):\n")
+            attack(computer, attack_coords)
+            computer.print_board()
+            current_player = computer
 
-    # computer.print_board()
+    if current_player.name == "comp":
+        print("You lose")
+
+    else:
+        print("Congrats!!")
 
 main()
