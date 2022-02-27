@@ -1,33 +1,167 @@
 Link to live site: https://cli-battleship-game.herokuapp.com/
 
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Smoothie Selector
 
-Welcome USER_NAME,
+![responsive-layout]()
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+## Table of contents
+1. [Introduction](#introduction)
+2. [UX](#ux)
+    * [Site owner goals](#site-owner-goals)
+    * [User needs](#user-needs)
+3. [Features](#features)
+    * [Existing features](#existing-features)
+    * [Features left to implement](#features-left-to-implement)
+4. [Testing](#testing)
+    * [User needs](#user-needs)
+    * [Challenges](#challenges)
+    * [Validator testing](#validator-testing)
+    * [Unfixed bugs](#unfixed-bugs)
+5. [Deployment](#deployment)
+6. [Credits](#credits)
+    * [Content](#content)
+    * [Acknowledgements](#acknowledgements)
 
-## Reminders
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## Introduction 
 
-## Creating the Heroku app
+This is a command line version of the classic game battleships. <short description> 
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## UX
 
-1. `heroku/python`
-2. `heroku/nodejs`
+### Site owner goals
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+The objectives of the site owner are: 
+1. To create an attractive, command line program, adhering to good UX design principles.
+2. To create a fun game.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+### User needs
 
-Connect your GitHub repository and deploy as normal.
+User would like:
 
-## Constraints
+1. To 
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Features
 
------
-Happy coding!
+### Existing features
+
+1. Structure and formatting
+* The main body of text  
+
+* The program code structure was developed based on the following process flow diagram, which was drafted before any of the code was written. 
+
+![flowchart]()
+
+2. Title and intro
+* The title is 
+* The welcoming statement prompts the user for a name 
+
+![title-intro]()
+
+2. <list features>
+
+![]()
+
+### Features left to implement
+
+If I had further time on this project I would like to add 
+
+## Testing
+
+### User needs
+
+Here I will identify a user need and run through how this is being met by the program.
+
+1. 
+
+![]()
+
+### Challenges
+
+1. Code structure
+
+explain challenges
+
+![]()
+
+2. 
+
+### Validator testing
+
+In this project, the errors that I mostly came across were the following:
+
+1. Pep8 E501 - line too long:
+* This error was rectified either by using either a backslash or quotation marks to split a long piece of text into two and separating them out onto two lines. 
+
+![]()
+
+2. 
+
+### Unfixed bugs 
+
+
+## Deployment
+
+This program was deployed to Heroku, following the below steps:
+
+1) Push most up-to-date code to Github
+
+2) Create a list of requirements by typing the following into the terminal:
+pip3 freeze > requirements.txt
+
+3) Push the requirements to Github
+
+4) Logon to Heroku
+
+5) Select create new app 
+
+6) Add app name 
+
+7) Add app region
+
+8) Select 'Create app'
+
+9) Open up the Settings tab, on the top ribbon
+
+10) In 'Config Vars' select 'Reveal Config Vars'
+
+11) Add 'PORT' as a key and '8000' as a value
+
+12) In 'Buildpacks' select 'Add buildpack' and choose python. Then, repeat for nodejs (order is important; python first followed by nodejs) 
+
+13) Navigate to 'Deploy' on the top ribbon
+
+14) In 'Deployment method', select 'Github', once clicked it should say 'connected'
+
+15) Enter a repository in Github to connect to and click 'Search'
+
+16) Once repository has been found, click 'Connect' to link new app to Github repository
+
+17) In 'Automatic deploys', select the 'Enable Automatic Deploy' option
+
+18) To view your command line on the Heroku platform, once a new code has been pushed to Github, log on to Heroku
+
+19) Select the required app that appears on your home screen
+
+20) Select 'Open app' on the right hand side of the screen 
+
+21) The app should appear in a new tab on the web browser
+
+22) The link to my Heroku app is:
+<insert link>
+
+
+## Credits 
+
+### Content
+
+I would like to acknowledge the below organizations:
+
+* Code institute for providing a python essentials template to work from and a terminal on Heroku to deploy my project.
+* The following site for the rules of battle ships []()
+* To create a flowchart for my project, [diagrams.net](https://app.diagrams.net/). 
+* The external python library [termcolor](https://pypi.org/project/termcolor/) to import colour to text.
+* [Pep8 online](http://pep8online.com/), for code validation checking.
+
+### Acknowledgements
+
