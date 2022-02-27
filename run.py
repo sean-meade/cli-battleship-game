@@ -96,7 +96,6 @@ def place_ship(players_board, starting_point, direction, size):
             spaces.append([y_up, x_coords])
         # If it'll fit and no ships in the way place the ship
         for coords in spaces:
-            print("coords", coords)
             players_board.board[coords[0]][coords[1]] = SHIP
 
     # Placing a ship in the down direction
@@ -132,7 +131,6 @@ def place_ship(players_board, starting_point, direction, size):
             return
         # Check to see if there is a ship already in the way
         for x_right in range(x_coords, x_coords + size):
-            # print("here 3:", players_board.name, y_coords, x_right)
             space = players_board.board[y_coords][x_right]
             if space != players_board.symbol:
                 if players_board.name != "comp":
@@ -155,7 +153,6 @@ def place_ship(players_board, starting_point, direction, size):
             return
         # Check to see if there is a ship already in the way
         for x_left in range(x_coords - (size - 1), x_coords + 1):
-            # print("here 4:", players_board.name, y_coords, x_left)
             space = players_board.board[y_coords][x_left]
             if space != players_board.symbol:
                 if players_board.name != "comp":
@@ -254,14 +251,12 @@ def main():
         if current_player.name == "comp":
             attack(player, comp_random_choice_of_coords())
             player.print_board()
-            print(player.hits)
             current_player = player
 
         else:
             attack_coords = input("Choose attach coords (e.g. 3e, 7f):\n")
             attack(computer, attack_coords)
             computer.print_board()
-            print(computer.hits)
             current_player = computer
 
     # Announce if the player wins or loses
