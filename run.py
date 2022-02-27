@@ -1,5 +1,7 @@
 import random
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+
+# Constant variables for choosing coords on the board (LETTERS) and 
+# choosing a direction for placing a ship (DIRECTIONS)
 LETTERS = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
 DIRECTIONS = ["up", "down", "right", "left"]
 
@@ -7,7 +9,9 @@ DIRECTIONS = ["up", "down", "right", "left"]
 class PlayerBoard:
     """
     A class that creates a players side of the board and holds
-    it's ships, hits and misses
+    it's ships, hits, symbol, and name
+    symbol = a single character string that fills out the side of the board
+    name = a string that's comp by default
     """
     def __init__(self, symbol, name="comp"):
         self.board = [[symbol] * 10,
@@ -24,24 +28,27 @@ class PlayerBoard:
         self.symbol = symbol
         self.hits = 0
 
-    def print_board(self):
-        """ print the players board to the screen """
 
-        for line in range(len(self.board)):
-            if line == 0:
+    def print_board(self):
+        """
+        print the players board to the terminal with letters 
+        on the y axis and numbers on the x axis
+        """
+        for line_num, line in enumerate(self.board):
+            if line_num == 0:
                 print('    ________________________________')
                 print('   |                                |')
-                print(LETTERS[line] + "  " + "|  " +
-                      '  '.join(self.board[line]) + "  |")
+                print(LETTERS[line_num] + "  " + "|  " +
+                      '  '.join(line) + "  |")
                 print('   |                                |')
-            elif line == 9:
-                print(LETTERS[line] + "  " + "|  " +
-                      '  '.join(self.board[line]) + "  |")
+            elif line_num == 9:
+                print(LETTERS[line_num] + "  " + "|  " +
+                      '  '.join(line) + "  |")
                 print('   |________________________________|')
                 print("      0  1  2  3  4  5  6  7  8  9")
             else:
-                print(LETTERS[line] + "  " + "|  " +
-                      '  '.join(self.board[line]) + "  |")
+                print(LETTERS[line_num] + "  " + "|  " +
+                      '  '.join(line) + "  |")
                 print('   |                                |')
 
 
@@ -151,14 +158,9 @@ def choose_placement_of_ship(players_board, size):
         # Choose randomly
         starting_point = comp_random_choice_of_coords()
         direction = DIRECTIONS[random.randint(0, 3)]
-    # else:
-        starting_point = input("""
-                               Choose starting point of ship (e.g. 6f):\n
-                               """)
-        direction = input("""
-                          Choose direction of the ship
-                          (e.g. UP, DOWN, LEFT, or RIGHT):\n
-                          """)
+    else:
+        starting_point = input("""Choose starting point of ship (e.g. 6f):\n""")
+        direction = input("""Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n""")
     place_ship(players_board, starting_point, direction, size)
 
 
