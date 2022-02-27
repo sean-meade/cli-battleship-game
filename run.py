@@ -223,10 +223,24 @@ def attack(players_board, attack_coords):
         print("Sorry you've already attacked there")
 
 
+def welcome():
+    """
+    Opening screen to the game
+    """
+    print("""
+___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____ 
+|__] |__|  |   |  |    |___ [__  |__| | |__] [__  
+|__] |  |  |   |  |___ |___ ___] |  | | |    ___] 
+                                                  
+""")
+
+    
+
 def main():
     """
     Main function ran on execution of file
     """
+    welcome()
     # Get username and create PlayerBoards for both player and computer
     name = input("Please give your username:\n")
     player = PlayerBoard("~", name)
