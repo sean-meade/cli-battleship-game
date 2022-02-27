@@ -5,8 +5,11 @@ Programming:
 - Add instructions
 - Add rules
 - Print empty board for computer (that shows hits and misses)
+- error handling for user input
 - Rearrange the functions to mirror flow on the game.
 - Separate functions into different files?
+Nice to have:
+    - create leaderboard using Google sheets
 
 README:
 - Elaborate Intro
