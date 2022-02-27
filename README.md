@@ -22,7 +22,7 @@ README:
 
 Other:
 - Nicer version of the flow chart (nice to have)
-- 
+- Maybe put button in beside the terminal rather then below it? - It would mean the whole thing would fit on the screen without scrolling. What about title and button under it on the left and the terminal on the right?
 
 
 Link to live site: https://cli-battleship-game.herokuapp.com/
