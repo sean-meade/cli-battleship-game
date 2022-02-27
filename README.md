@@ -5,7 +5,8 @@ Programming:
 - Add instructions
 - Add rules
 - Print empty board for computer (that shows hits and misses)
-- 
+- Rearrange the functions to mirror flow on the game.
+- Separate functions into different files?
 
 README:
 - Elaborate Intro
