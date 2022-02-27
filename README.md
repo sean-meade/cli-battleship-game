@@ -1,6 +1,33 @@
+To Do:
+
+Programming:
+- Add proper welcome page
+- Add instructions
+- Add rules
+- Print empty board for computer (that shows hits and misses)
+- 
+
+README:
+- Elaborate Intro
+- Site owner goals
+- User needs
+- Existing features
+- Features left to implement
+- Testing: User needs
+- Testing: Challenges
+- Validator testing
+- Unfixed bugs
+- Content
+- Acknowledgements
+
+Other:
+- Nicer version of the flow chart (nice to have)
+- 
+
+
 Link to live site: https://cli-battleship-game.herokuapp.com/
 
-# Smoothie Selector
+# Battleship
 
 ![responsive-layout]()
 
