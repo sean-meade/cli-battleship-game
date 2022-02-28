@@ -253,13 +253,18 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
                     ships. An x represents a hit and an o represents a miss.
                  4. The game is won when a player get 17 hits on their opponents 
                     board""")
-
+        input("Press enter to go back to the main menu.\n")
+        welcome()
+    elif instruction == "P":
+        main()
+    else:
+        print("Please type a proper command")
+        welcome()
 
 def main():
     """
     Main function ran on execution of file
     """
-    welcome()
     # Get username and create PlayerBoards for both player and computer
     name = input("Please give your username:\n")
     player = PlayerBoard("~", name)
@@ -299,6 +304,4 @@ def main():
     else:
         print("Congrats!!")
 
-    
-
-main()
+welcome()
