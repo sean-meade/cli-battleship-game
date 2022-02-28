@@ -253,7 +253,7 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
                     ships. An x represents a hit and an o represents a miss.
                  4. The game is won when a player get 17 hits on their opponents 
                     board""")
-    
+
 
 def main():
     """
