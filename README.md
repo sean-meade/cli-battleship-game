@@ -1,9 +1,6 @@
 To Do:
 
 Programming:
-- Add proper welcome page
-- Add instructions
-- Add rules
 - Print empty board for computer (that shows hits and misses)
 - error handling for user input
 - Rearrange the functions to mirror flow on the game.
