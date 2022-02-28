@@ -7,6 +7,7 @@ Programming:
 - Print empty board for computer (that shows hits and misses)
 - Rearrange the functions to mirror flow on the game.
 - Separate functions into different files?
+- refactor code in place_ship function
 
 README:
 - Elaborate Intro
