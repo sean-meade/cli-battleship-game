@@ -223,7 +223,7 @@ def attack(players_board, attack_coords):
         print("Sorry you've already attacked there")
 
 
-def welcome():
+def menu():
     """
     Opening screen to the game
     """
@@ -235,7 +235,7 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
 """)
     instruction = input("Enter p to play or i for instructions:\n").upper()
     if instruction == "I":
-        print("""1. Enter the name you want to show on the leaderboard. You 
+        print("""1. Enter the name you want to show on the leaderboard. You
                     can use any characters you want
                  2. Place your ships on the board:
                     - You will be told the size of the ship you have to place 
@@ -254,12 +254,12 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
                  4. The game is won when a player get 17 hits on their opponents 
                     board""")
         input("Press enter to go back to the main menu.\n")
-        welcome()
+        menu()
     elif instruction == "P":
         main()
     else:
         print("Please type a proper command")
-        welcome()
+        menu()
 
 def main():
     """
@@ -304,4 +304,4 @@ def main():
     else:
         print("Congrats!!")
 
-welcome()
+menu()
