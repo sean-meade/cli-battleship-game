@@ -32,10 +32,22 @@ class PlayerBoard:
 
     def print_board(self):
         """
-        print the players board to the terminal with letters 
+        print the players board to the terminal with letters
         on the y axis and numbers on the x axis
         """
-        for line_num, line in enumerate(self.board):
+        if self.name == "comp":
+            whole_board = [[], [], [], [], [], [], [], [], [], []]
+            for x in range(len(self.board)):
+                for y in range(len(self.board)):
+                    print(self.board[x][y], x, y)
+                    if self.board[x][y] == '#':
+                        whole_board[x].append(' ')
+                    else:
+                        whole_board[x].append(self.board[x][y])
+        else:
+            whole_board = self.board
+        
+        for line_num, line in enumerate(whole_board):
             # Prints the top line of the board
             if line_num == 0:
                 print('    ________________________________')
