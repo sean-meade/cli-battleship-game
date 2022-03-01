@@ -5,6 +5,9 @@ import random
 LETTERS = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
 DIRECTIONS = ["up", "down", "right", "left"]
 
+ROWS = COLUMNS = 10
+SHIP_CHARACTER = "#"
+
 
 class PlayerBoard:
     """
@@ -15,16 +18,7 @@ class PlayerBoard:
     """
     # Create player board, set name, symbol and hits
     def __init__(self, symbol, name="comp"):
-        self.board = [[symbol] * 10,
-                      [symbol] * 10,
-                      [symbol] * 10,
-                      [symbol] * 10,
-                      [symbol] * 10,
-                      [symbol] * 10,
-                      [symbol] * 10,
-                      [symbol] * 10,
-                      [symbol] * 10,
-                      [symbol] * 10]
+        self.board = [[symbol] * COLUMNS for _ in range(ROWS)]
         self.name = name
         self.symbol = symbol
         self.hits = 0
@@ -36,7 +30,7 @@ class PlayerBoard:
         on the y axis and numbers on the x axis
         """
         if self.name == "comp":
-            whole_board = [[], [], [], [], [], [], [], [], [], []]
+            whole_board = [[] * COLUMNS for _ in range(ROWS)]
             for x in range(len(self.board)):
                 for y in range(len(self.board)):
                     print(self.board[x][y], x, y)
@@ -78,8 +72,6 @@ def place_ship(players_board, starting_point, direction, size):
     size = size of the ship being placed
     """
 
-    # Character that represents the ship
-    SHIP = "#"
     # the starting point converted to integers
     x_coords, y_coords = convert_coords(starting_point)
     # the direction string converted to upper case
@@ -108,7 +100,7 @@ def place_ship(players_board, starting_point, direction, size):
             spaces.append([y_up, x_coords])
         # If it'll fit and no ships in the way place the ship
         for coords in spaces:
-            players_board.board[coords[0]][coords[1]] = SHIP
+            players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
 
     # Placing a ship in the down direction
     elif direction_upper == "DOWN":
@@ -131,7 +123,7 @@ def place_ship(players_board, starting_point, direction, size):
             spaces.append([y_down, x_coords])
         # If it'll fit and no ships in the way place the ship
         for coords in spaces:
-            players_board.board[coords[0]][coords[1]] = SHIP
+            players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
 
     # Placing a ship in the right direction
     elif direction_upper == "RIGHT":
@@ -153,7 +145,7 @@ def place_ship(players_board, starting_point, direction, size):
             spaces.append([y_coords, x_right])
         # If it'll fit and no ships in the way place the ship
         for coords in spaces:
-            players_board.board[coords[0]][coords[1]] = SHIP
+            players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
 
     # Placing a ship in the left direction
     elif direction_upper == "LEFT":
@@ -175,7 +167,7 @@ def place_ship(players_board, starting_point, direction, size):
             spaces.append([y_coords, x_left])
         # If it'll fit and no ships in the way place the ship
         for coords in spaces:
-            players_board.board[coords[0]][coords[1]] = SHIP
+            players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
 
 
 def comp_random_choice_of_coords():
@@ -211,7 +203,7 @@ def convert_coords(coords):
     """
     x_and_y = list(coords)
     x_coords = int(x_and_y[0])
-    y_coords = 9 - (ord(x_and_y[1]) - 97)
+    y_coords = 9 - (ord((x_and_y[1]).lower()) - 97)
 
     return x_coords, y_coords
 
@@ -228,7 +220,7 @@ def attack(players_board, attack_coords):
     # Check if its a hit ("x"), a miss ("o"), or if player has already attacked there
     if target == players_board.symbol:
         players_board.board[y_coords][x_coords] = "o"
-    elif target == "#":
+    elif target == SHIP_CHARACTER:
         players_board.board[y_coords][x_coords] = "X"
         players_board.hits += 1
     else:
@@ -297,7 +289,7 @@ def main():
 
     # While there are still ships (or parts of ships) to attack continue the attack back and forth
     while((player.hits < 24) and (computer.hits < 24)):
-
+        
         if current_player.name == "comp":
             attack(player, comp_random_choice_of_coords())
             player.print_board()
