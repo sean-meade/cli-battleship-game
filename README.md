@@ -10,7 +10,7 @@ Programming:
 - Nice to have:
     - create leader board using Google sheets
     - make it so someone can use 3e or e3
-
+    - Add place ship function to class
 
 README:
 - Existing features
