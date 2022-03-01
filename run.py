@@ -33,7 +33,6 @@ class PlayerBoard:
             whole_board = [[] * COLUMNS for _ in range(ROWS)]
             for x in range(len(self.board)):
                 for y in range(len(self.board)):
-                    print(self.board[x][y], x, y)
                     if self.board[x][y] == '#':
                         whole_board[x].append(' ')
                     else:
