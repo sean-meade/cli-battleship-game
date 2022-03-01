@@ -7,6 +7,7 @@ Programming:
 - Separate functions into different files
 - refactor code in place_ship function
 - Put all numbers as constants at top of files
+- make it so player cant use 'comp' as username
 - Nice to have:
     - create leader board using Google sheets
     - make it so someone can use 3e or e3
