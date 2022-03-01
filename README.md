@@ -1,7 +1,6 @@
 To Do:
 
 Programming:
-- Print empty board for computer (that shows hits and misses)
 - error handling for user input
 - Rearrange the functions to mirror flow on the game.
 - Separate functions into different files?
@@ -11,9 +10,6 @@ Programming:
 
 
 README:
-- Elaborate Intro
-- Site owner goals
-- User needs
 - Existing features
 - Features left to implement
 - Testing: User needs
@@ -55,21 +51,21 @@ Link to live site: https://cli-battleship-game.herokuapp.com/
 
 ## Introduction 
 
-This is a command line version of the classic game battleships. <short description> 
+This is a command line version of the classic game battleships. The program allows the user to place their ships on their side of the board and then attack the computers ships on the computers board. The first to make 17 hits wins the game.
 
 ## UX
 
 ### Site owner goals
 
 The objectives of the site owner are: 
-1. To create an attractive, command line program, adhering to good UX design principles.
-2. To create a fun game.
+1. To create a fun game.
+2. To create an attractive, command line program, adhering to good UX design principles.
 
 ### User needs
 
 User would like:
 
-1. To 
+1. To play a fun game and try and beat the computer.
 
 ## Features
 
