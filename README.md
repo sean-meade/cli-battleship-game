@@ -3,10 +3,11 @@ To Do:
 Programming:
 - error handling for user input
 - Rearrange the functions to mirror flow on the game.
-- Separate functions into different files?
+- Separate functions into different files
 - refactor code in place_ship function
+- Put all numbers as constants at top of files
 - Nice to have:
-    - create leaderboard using Google sheets
+    - create leader board using Google sheets
 
 
 README:
