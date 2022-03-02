@@ -27,6 +27,8 @@ class PlayerBoard:
         print the players board to the terminal with letters
         on the y axis and numbers on the x axis
         """
+
+        # Hides the computers ships when printed to the terminal
         if self.name == "comp":
             whole_board = [[] * COLUMNS for _ in range(ROWS)]
             for x in range(len(self.board)):

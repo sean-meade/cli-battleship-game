@@ -1,13 +1,11 @@
 import random
-from player_board import PlayerBoard, SHIP_CHARACTER, LETTERS, DIRECTIONS
+from player_board import PlayerBoard, SHIP_CHARACTER, LETTERS, DIRECTIONS, COLUMNS
 
 def ship_wont_fit_on_board(players_board, size):
     """ Called when ship wont fit on board """
-    players_board.print_board()
     if players_board.name != "comp":
         print("ship won't fit on board try again")
     choose_placement_of_ship(players_board, size)
-    return
 
 def place_ship(players_board, starting_point, direction, size):
     """
@@ -32,6 +30,7 @@ def place_ship(players_board, starting_point, direction, size):
         # If the ship runs off the board try again
         if y_coords - (size - 1) < 0:
             ship_wont_fit_on_board(players_board, size)
+            return
         # Check to see if there is a ship already in the way
         for y_up in range(y_coords - (size - 1), y_coords + 1):
             space = players_board.board[y_up][x_coords]
@@ -42,15 +41,15 @@ def place_ship(players_board, starting_point, direction, size):
                 spaces = []
                 break
             spaces.append([y_up, x_coords])
-        # If it'll fit and no ships in the way place the ship
-        for coords in spaces:
-            players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
+
+        
 
     # Placing a ship in the down direction
     elif direction_upper == "DOWN":
         # If the ship runs off the board try again
-        if y_coords + size > 9:
+        if y_coords + size > COLUMNS:
             ship_wont_fit_on_board(players_board, size)
+            return
         # Check to see if there is a ship already in the way
         for y_down in range(y_coords, y_coords + size):
             space = players_board.board[y_down][x_coords]
@@ -61,16 +60,14 @@ def place_ship(players_board, starting_point, direction, size):
                 choose_placement_of_ship(players_board, size)
                 spaces = []
                 break
-            spaces.append([y_down, x_coords])
-        # If it'll fit and no ships in the way place the ship
-        for coords in spaces:
-            players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
+            spaces.append([y_down, x_coords])        
 
     # Placing a ship in the right direction
     elif direction_upper == "RIGHT":
         # If the ship runs off the board try again
-        if x_coords + size > 9:
+        if x_coords + size > COLUMNS:
             ship_wont_fit_on_board(players_board, size)
+            return
         # Check to see if there is a ship already in the way
         for x_right in range(x_coords, x_coords + size):
             space = players_board.board[y_coords][x_right]
@@ -81,15 +78,14 @@ def place_ship(players_board, starting_point, direction, size):
                 spaces = []
                 break
             spaces.append([y_coords, x_right])
-        # If it'll fit and no ships in the way place the ship
-        for coords in spaces:
-            players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
+
 
     # Placing a ship in the left direction
     elif direction_upper == "LEFT":
         # If the ship runs off the board try again
         if x_coords - (size - 1) < 0:
             ship_wont_fit_on_board(players_board, size)
+            return
         # Check to see if there is a ship already in the way
         for x_left in range(x_coords - (size - 1), x_coords + 1):
             space = players_board.board[y_coords][x_left]
@@ -100,9 +96,10 @@ def place_ship(players_board, starting_point, direction, size):
                 spaces = []
                 break
             spaces.append([y_coords, x_left])
-        # If it'll fit and no ships in the way place the ship
-        for coords in spaces:
-            players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
+
+    # If it'll fit and no ships in the way place the ship
+    for coords in spaces:
+        players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
 
 
 def comp_random_choice_of_coords():
@@ -126,6 +123,7 @@ def choose_placement_of_ship(players_board, size):
         starting_point = comp_random_choice_of_coords()
         direction = DIRECTIONS[random.randint(0, 3)]
     else:
+        print(f"Place ship of size {size}")
         starting_point = input("""Choose starting point of ship (e.g. 6f):\n""")
         direction = input("""Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n""")
     place_ship(players_board, starting_point, direction, size)
@@ -224,7 +222,7 @@ def main():
     current_player = player
 
     # While there are still ships (or parts of ships) to attack continue the attack back and forth
-    while((player.hits < 24) and (computer.hits < 24)):
+    while((player.hits < sum(ship_sizes)) and (computer.hits < sum(ship_sizes))):
         
         if current_player.name == "comp":
             attack(player, comp_random_choice_of_coords())
