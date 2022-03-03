@@ -114,7 +114,7 @@ def place_ship(players_board, starting_point, direction, size):
         for coords in spaces:
             players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
 
-    except:
+    except (AttributeError, ValueError):
         print("Use valid coords a number (0-9) followed by a letter (a-j) e.g. 3e")
         choose_placement_of_ship(players_board, size)
 
@@ -187,33 +187,38 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
 |__] |  |  |   |  |___ |___ ___] |  | | |    ___] 
                                                   
 """)
-    instruction = input("Enter p to play or i for instructions:\n").upper()
-    if instruction == "I":
-        print("""1. Enter the name you want to show on the leaderboard. You
-                    can use any characters you want
-                 2. Place your ships on the board:
-                    - You will be told the size of the ship you have to place 
-                      (there are 5 in total).
-                    - You will asked for a starting point this is a point on the 
-                      board that the ship starts at. You select this point with a
-                      number (0 - 9) and a letter (a - j), which represent the x 
-                      and the y axis respectively.
-                    - You will then be asked for a direction to place your your
-                      ship (e.g. "up", "down", "left", "right").
-                    - The ship will start at the starting point and will take up
-                      the size of the ship in direction input.
-                 3. Attack the computers side of the board. You can attack the 
-                    computer by using the coordinates similar to placing your
-                    ships. An x represents a hit and an o represents a miss.
-                 4. The game is won when a player get 17 hits on their opponents 
-                    board""")
-        input("Press enter to go back to the main menu.\n")
-        menu()
-    elif instruction == "P":
-        main()
-    else:
-        print("Please type a proper command")
-        menu()
+    while True:
+        try:
+            instruction = input("Enter p to play or i for instructions:\n").upper()
+            if instruction == "I":
+                print("""1. Enter the name you want to show on the leaderboard. You
+                            can use any characters you want
+                        2. Place your ships on the board:
+                            - You will be told the size of the ship you have to place 
+                            (there are 5 in total).
+                            - You will asked for a starting point this is a point on the 
+                            board that the ship starts at. You select this point with a
+                            number (0 - 9) and a letter (a - j), which represent the x 
+                            and the y axis respectively.
+                            - You will then be asked for a direction to place your your
+                            ship (e.g. "up", "down", "left", "right").
+                            - The ship will start at the starting point and will take up
+                            the size of the ship in direction input.
+                        3. Attack the computers side of the board. You can attack the 
+                            computer by using the coordinates similar to placing your
+                            ships. An x represents a hit and an o represents a miss.
+                        4. The game is won when a player get 17 hits on their opponents 
+                            board""")
+        
+            elif instruction == "P":
+                break
+            else:
+                raise ValueError()
+        except (AttributeError, ValueError):
+            print("Please type a proper command")
+
+    # User pressed on p
+    main()
 
 def main():
     """
@@ -240,7 +245,7 @@ def main():
 
     # While there are still ships (or parts of ships) to attack continue the attack back and forth
     while((player.hits < sum(ship_sizes)) and (computer.hits < sum(ship_sizes))):
-        
+
         if current_player.name == "comp":
             attack(player, comp_random_choice_of_coords())
             player.print_board()
