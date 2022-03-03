@@ -227,6 +227,9 @@ def main():
     """
     # Get username and create PlayerBoards for both player and computer
     name = input("Please give your username:\n")
+    if name == "comp":
+        print("That's the computers name sorry you'll have to pick another one")
+        main()
     player = PlayerBoard("~", name)
     computer = PlayerBoard(" ")
     

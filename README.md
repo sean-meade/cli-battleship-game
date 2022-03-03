@@ -1,7 +1,6 @@
 To Do:
 
 Programming:
-- error handling for user input
 - Rearrange the functions to mirror flow on the game.
 - Separate functions into different files
 - Put all numbers as constants at top of files
