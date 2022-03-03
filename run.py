@@ -140,6 +140,7 @@ def choose_placement_of_ship(players_board, size):
         starting_point = comp_random_choice_of_coords()
         direction = DIRECTIONS[random.randint(0, 3)]
     else:
+        players_board.print_board()
         print(f"Place ship of size {size}")
         starting_point = input("""Choose starting point of ship (e.g. 6f):\n""")
         direction = input("""Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n""")
@@ -209,7 +210,7 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
                             ships. An x represents a hit and an o represents a miss.
                         4. The game is won when a player get 17 hits on their opponents 
                             board""")
-        
+
             elif instruction == "P":
                 break
             else:
