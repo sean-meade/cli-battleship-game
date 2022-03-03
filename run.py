@@ -192,24 +192,25 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
         try:
             instruction = input("Enter p to play or i for instructions:\n").upper()
             if instruction == "I":
-                print("""1. Enter the name you want to show on the leaderboard. You
-                            can use any characters you want
-                        2. Place your ships on the board:
-                            - You will be told the size of the ship you have to place 
-                            (there are 5 in total).
-                            - You will asked for a starting point this is a point on the 
-                            board that the ship starts at. You select this point with a
-                            number (0 - 9) and a letter (a - j), which represent the x 
-                            and the y axis respectively.
-                            - You will then be asked for a direction to place your your
-                            ship (e.g. "up", "down", "left", "right").
-                            - The ship will start at the starting point and will take up
-                            the size of the ship in direction input.
-                        3. Attack the computers side of the board. You can attack the 
-                            computer by using the coordinates similar to placing your
-                            ships. An x represents a hit and an o represents a miss.
-                        4. The game is won when a player get 17 hits on their opponents 
-                            board""")
+                print("""
+    1. Enter the name you want to show on the leaderboard. You
+        can use any characters you want
+    2. Place your ships on the board:
+        - You will be told the size of the ship you have to place 
+        (there are 5 in total).
+        - You will asked for a starting point this is a point on the 
+        board that the ship starts at. You select this point with a
+        number (0 - 9) and a letter (a - j), which represent the x 
+        and the y axis respectively.
+        - You will then be asked for a direction to place your your
+        ship (e.g. "up", "down", "left", "right").
+        - The ship will start at the starting point and will take up
+        the size of the ship in direction input.
+    3. Attack the computers side of the board. You can attack the 
+        computer by using the coordinates similar to placing your
+        ships. An x represents a hit and an o represents a miss.
+    4. The game is won when a player get 17 hits on their opponents 
+        board\n""")
 
             elif instruction == "P":
                 break
@@ -237,7 +238,6 @@ def main():
     # Place the ships on the board
     for size in ship_sizes:
         choose_placement_of_ship(player, size)
-        player.print_board()
         choose_placement_of_ship(computer, size)
 
 
