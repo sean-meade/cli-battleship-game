@@ -148,9 +148,13 @@ def choose_placement_of_ship(players_board, size):
         direction = DIRECTIONS[random.randint(0, 3)]
     else:
         players_board.print_board()
-        print(f"Place ship of size {size}")
-        starting_point = input(colored("""Choose starting point of ship (e.g. 6f):\n""", "green"))
-        direction = input(colored("""Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n""", "green"))
+        print(f"\n Place ship of size {size}")
+        starting_point = input(colored("Choose starting point of ship (e.g. 6f):\n", "green"))
+        if starting_point[1].lower() not in LETTERS:
+            print(colored("Please choose a letter between a and j", "red"))
+            choose_placement_of_ship(players_board, size)
+            return
+        direction = input(colored("\nChoose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n", "green"))
     place_ship(players_board, starting_point, direction, size)
 
 
@@ -166,29 +170,33 @@ def convert_coords(coords):
     return x_coords, y_coords
 
 
-def attack(players_board):
+def attack(opponents_board):
     """
     Attacks the opponents board
     players_board = current players PlayerBoard
     attack_coords = a string containing coordinates on the board (e.g. "5d")
     """
-    if players_board.name == "comp":
+    if opponents_board.name == "comp":
         attack_coords = input(colored("Choose attach coords (e.g. 3e, 7f):\n", "green"))
+        if attack_coords[1].lower() not in LETTERS:
+            print(colored("Please choose a letter between a and j", "red"))
+            attack(opponents_board)
+            return
     else:
         attack_coords = comp_random_choice_of_coords()
 
     x_coords, y_coords = convert_coords(attack_coords)
-    target = players_board.board[y_coords][x_coords]
+    target = opponents_board.board[y_coords][x_coords]
 
     # Check if its a hit ("x"), a miss ("o"), or if player has already attacked there
-    if target == players_board.symbol:
-        players_board.board[y_coords][x_coords] = "o"
+    if target == opponents_board.symbol:
+        opponents_board.board[y_coords][x_coords] = "o"
     elif target == SHIP_CHARACTER:
-        players_board.board[y_coords][x_coords] = "X"
-        players_board.hits += 1
+        opponents_board.board[y_coords][x_coords] = "X"
+        opponents_board.hits += 1
     else:
         print(colored("Sorry you've already attacked there", "red"))
-        attack(players_board)
+        attack(opponents_board)
 
 def menu():
     """
@@ -253,10 +261,7 @@ def main():
         choose_placement_of_ship(player, size)
         choose_placement_of_ship(computer, size)
 
-
-    computer.print_board()
     player.print_board()
-
     # Set current player (may randomize this)
     current_player = player
 
@@ -270,7 +275,6 @@ def main():
             current_player = player
 
         else:
-            
             attack(computer)
             computer.print_board()
             current_player = computer

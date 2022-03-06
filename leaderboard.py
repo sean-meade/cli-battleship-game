@@ -26,4 +26,4 @@ def print_top_players():
     print("{:15s} {:20s}".format("", "Leaderboard"))
     print("{:5s} {:20s} {:30s}".format("", "Name:", "Time:\n"))
     for player in range(3):
-        print(colored("{:5s} {:20s} {:30s}".format("", leader_board[player][0], leader_board[player][1] + "\n"), "green"))
+        print(colored("{:5s} {:20s} {:30s}".format("", leader_board[player][0], leader_board[player][1] + "\n"), "blue"))
