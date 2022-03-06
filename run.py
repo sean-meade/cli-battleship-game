@@ -2,7 +2,7 @@ import random
 from termcolor import colored
 from player_board import PlayerBoard, SHIP_CHARACTER, LETTERS, DIRECTIONS, COLUMNS
 
-ship_sizes = [2, 3, 3, 4, 5]
+ship_sizes: list = [2, 3, 3, 4, 5]
 
 def ship_wont_fit_on_board(players_board, size):
     """ Called when ship wont fit on board """
@@ -141,14 +141,14 @@ def choose_placement_of_ship(players_board, size):
     """
 
     # If it's the computer randomly choose placement options otherwise ask the user for theirs
-    # if players_board.name == "comp":
-    starting_point = comp_random_choice_of_coords()
-    direction = DIRECTIONS[random.randint(0, 3)]
-    # else:
-    #     players_board.print_board()
-    #     print(f"Place ship of size {size}")
-    #     starting_point = input(colored("""Choose starting point of ship (e.g. 6f):\n""", "green"))
-    #     direction = input(colored("""Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n""", "green"))
+    if players_board.name == "comp":
+        starting_point = comp_random_choice_of_coords()
+        direction = DIRECTIONS[random.randint(0, 3)]
+    else:
+        players_board.print_board()
+        print(f"Place ship of size {size}")
+        starting_point = input(colored("""Choose starting point of ship (e.g. 6f):\n""", "green"))
+        direction = input(colored("""Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n""", "green"))
     place_ship(players_board, starting_point, direction, size)
 
 

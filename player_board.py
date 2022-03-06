@@ -1,10 +1,10 @@
 # Constant variables for choosing coords on the board (LETTERS) and 
 # choosing a direction for placing a ship (DIRECTIONS)
-LETTERS = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
-DIRECTIONS = ["up", "down", "right", "left"]
+LETTERS: list = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
+DIRECTIONS: list = ["up", "down", "right", "left"]
 
 ROWS = COLUMNS = 10
-SHIP_CHARACTER = "#"
+SHIP_CHARACTER: str = "#"
 
 
 class PlayerBoard:
