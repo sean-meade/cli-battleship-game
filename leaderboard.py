@@ -1,6 +1,7 @@
 import gspread
-from datetime import timedelta
 from google.oauth2.service_account import Credentials
+from termcolor import colored
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -22,6 +23,7 @@ def add_name_and_time_to_leaderboard(name, time, secs):
 def print_top_players():
     SHEET.worksheet('scores').sort((3, 'asc'))
     leader_board =  SHEET.worksheet('scores').get_all_values()
-    print("Name:", "Time")
+    print("{:15s} {:20s}".format("", "Leaderboard"))
+    print("{:5s} {:20s} {:30s}".format("", "Name:", "Time:\n"))
     for player in range(3):
-        print(leader_board[player][0], leader_board[player][1])
+        print(colored("{:5s} {:20s} {:30s}".format("", leader_board[player][0], leader_board[player][1] + "\n"), "green"))
