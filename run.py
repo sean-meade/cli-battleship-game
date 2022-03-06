@@ -1,4 +1,5 @@
 import random
+from termcolor import colored
 from player_board import PlayerBoard, SHIP_CHARACTER, LETTERS, DIRECTIONS, COLUMNS
 
 ship_sizes = [2, 3, 3, 4, 5]
@@ -227,7 +228,7 @@ def main():
     Main function ran on execution of file
     """
     # Get username and create PlayerBoards for both player and computer
-    name = input("Please give your username:\n")
+    name = input(colored("Please give your username:\n", "green"))
     if name == "comp":
         print("That's the computers name sorry you'll have to pick another one")
         main()
