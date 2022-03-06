@@ -15,9 +15,9 @@ class PlayerBoard:
     name = a string that's comp by default
     """
     # Create player board, set name, symbol and hits
-    def __init__(self, symbol, name="comp"):
-        self.board = [[symbol] * COLUMNS for _ in range(ROWS)]
-        self.name = name
+    def __init__(self, symbol: str, name="comp"):
+        self.board: list = [[symbol] * COLUMNS for _ in range(ROWS)]
+        self.name: str = name
         self.symbol = symbol
         self.hits = 0
 
@@ -30,7 +30,7 @@ class PlayerBoard:
 
         # Hides the computers ships when printed to the terminal
         if self.name == "comp":
-            whole_board = [[] * COLUMNS for _ in range(ROWS)]
+            whole_board: list = [[] * COLUMNS for _ in range(ROWS)]
             for x in range(len(self.board)):
                 for y in range(len(self.board)):
                     if self.board[x][y] == '#':
