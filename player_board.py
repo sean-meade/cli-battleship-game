@@ -1,4 +1,4 @@
-# Constant variables for choosing coords on the board (LETTERS) and 
+# Constant variables for choosing coords on the board (LETTERS) and
 # choosing a direction for placing a ship (DIRECTIONS)
 LETTERS: list = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
 DIRECTIONS: list = ["up", "down", "right", "left"]
