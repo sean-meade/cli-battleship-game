@@ -2,9 +2,14 @@
 # choosing a direction for placing a ship (DIRECTIONS)
 LETTERS: list = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
 DIRECTIONS: list = ["up", "down", "right", "left"]
+NUMS = [str(x) for x in list(range(0, 10))]
 
 ROWS = COLUMNS = 10
 SHIP_CHARACTER: str = "#"
+
+line_spacer = f"\t|{' '*32}|"
+bottom_of_board = f"\t|{'_'*32}|"
+top_of_board = f"\t {'_'*32}"
 
 
 class PlayerBoard:
@@ -43,19 +48,16 @@ class PlayerBoard:
         for line_num, line in enumerate(whole_board):
             # Prints the top line of the board
             if line_num == 0:
-                print('    ________________________________')
-                print('   |                                |')
-                print(LETTERS[line_num] + "  " + "|  " +
-                      '  '.join(line) + "  |")
-                print('   |                                |')
+                print(f"""{top_of_board}
+{line_spacer}
+     {LETTERS[line_num]}  |  {'  '.join(line)}  |
+{line_spacer}""")
             # Prints the bottom line of the board
             elif line_num == 9:
-                print(LETTERS[line_num] + "  " + "|  " +
-                      '  '.join(line) + "  |")
-                print('   |________________________________|')
-                print("      0  1  2  3  4  5  6  7  8  9")
+                print(f"""     {LETTERS[line_num]}  |  {'  '.join(line)}  |
+{bottom_of_board}
+\t   {'  '.join(NUMS)}""")
             # Prints the lines between
             else:
-                print(LETTERS[line_num] + "  " + "|  " +
-                      '  '.join(line) + "  |")
-                print('   |                                |')
+                print(f"""     {LETTERS[line_num]}  |  {'  '.join(line)}  |
+{line_spacer}""")
