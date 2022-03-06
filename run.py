@@ -1,4 +1,6 @@
 import random
+from datetime import datetime
+from leaderboard import add_name_and_time_to_leaderboard
 from termcolor import colored
 from player_board import PlayerBoard, SHIP_CHARACTER, LETTERS, DIRECTIONS, COLUMNS
 
@@ -141,14 +143,14 @@ def choose_placement_of_ship(players_board, size):
     """
 
     # If it's the computer randomly choose placement options otherwise ask the user for theirs
-    if players_board.name == "comp":
-        starting_point = comp_random_choice_of_coords()
-        direction = DIRECTIONS[random.randint(0, 3)]
-    else:
-        players_board.print_board()
-        print(f"Place ship of size {size}")
-        starting_point = input(colored("""Choose starting point of ship (e.g. 6f):\n""", "green"))
-        direction = input(colored("""Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n""", "green"))
+    # if players_board.name == "comp":
+    starting_point = comp_random_choice_of_coords()
+    direction = DIRECTIONS[random.randint(0, 3)]
+    # else:
+    #     players_board.print_board()
+    #     print(f"Place ship of size {size}")
+    #     starting_point = input(colored("""Choose starting point of ship (e.g. 6f):\n""", "green"))
+    #     direction = input(colored("""Choose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n""", "green"))
     place_ship(players_board, starting_point, direction, size)
 
 
@@ -170,10 +172,10 @@ def attack(players_board):
     players_board = current players PlayerBoard
     attack_coords = a string containing coordinates on the board (e.g. "5d")
     """
-    if players_board.name == "comp":
-        attack_coords = input(colored("Choose attach coords (e.g. 3e, 7f):\n", "green"))
-    else:
-        attack_coords = comp_random_choice_of_coords()
+    # if players_board.name == "comp":
+    #     attack_coords = input(colored("Choose attach coords (e.g. 3e, 7f):\n", "green"))
+    # else:
+    attack_coords = comp_random_choice_of_coords()
 
     x_coords, y_coords = convert_coords(attack_coords)
     target = players_board.board[y_coords][x_coords]
@@ -257,6 +259,7 @@ def main():
     # Set current player (may randomize this)
     current_player = player
 
+    start_time = datetime.now()
     # While there are still ships (or parts of ships) to attack continue the attack back and forth
     while((player.hits < sum(ship_sizes)) and (computer.hits < sum(ship_sizes))):
 
@@ -271,11 +274,15 @@ def main():
             computer.print_board()
             current_player = computer
 
+    end_time = datetime.now()
+
     # Announce if the player wins or loses
     if current_player.name != "comp":
         print(colored("You lose", "red"))
 
     else:
+        complete_time = str(end_time - start_time)
+        add_name_and_time_to_leaderboard(name, complete_time)
         print(colored("Congrats!!", "green"))
 
 menu()

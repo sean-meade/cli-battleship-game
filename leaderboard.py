@@ -14,4 +14,6 @@ SHEET = GSPREAD_CLIENT.open('leader-board')
 
 data = SHEET.worksheet('scores').get_all_values()
 
-print(data)
+def add_name_and_time_to_leaderboard(name, time):
+    leader_board =  SHEET.worksheet('scores')
+    leader_board.append_row([name, time])
