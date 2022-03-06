@@ -18,10 +18,11 @@ def choose_placement_of_ship(players_board, size):
         players_board.print_board()
         print(f"\n Place ship of size {size}")
         starting_point = input(colored("Choose starting point of ship (e.g. 6f):\n", "green"))
-        if starting_point[1].lower() not in LETTERS:
-            print(colored("Please choose a letter between a and j", "red"))
+        try:
+            starting_point[1].lower() in LETTERS
+        except:
+            print(colored("Please coordinates with a number (0-9) followed by a letter (a-j)", "red"))
             choose_placement_of_ship(players_board, size)
-            return
         direction = input(colored("\nChoose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n", "green"))
     place_ship(players_board, starting_point, direction, size)
 

@@ -30,10 +30,11 @@ def attack(opponents_board):
     """
     if opponents_board.name == "comp":
         attack_coords = input(colored("Choose attach coords (e.g. 3e, 7f):\n", "green"))
-        if attack_coords[1].lower() not in LETTERS:
+        try:
+            attack_coords[1].lower() in LETTERS
+        except:
             print(colored("Please choose a letter between a and j", "red"))
             attack(opponents_board)
-            return
     else:
         attack_coords = comp_random_choice_of_coords()
 
