@@ -1,6 +1,6 @@
 import random
 from datetime import datetime
-from leaderboard import add_name_and_time_to_leaderboard
+from leaderboard import add_name_and_time_to_leaderboard, print_top_players
 from termcolor import colored
 from player_board import PlayerBoard, SHIP_CHARACTER, LETTERS, DIRECTIONS, COLUMNS
 
@@ -200,6 +200,7 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
 |__] |  |  |   |  |___ |___ ___] |  | | |    ___] 
                                                   
 """)
+    print_top_players()
     while True:
         try:
             instruction = input(colored("Enter p to play or i for instructions:\n", "green")).upper()
@@ -281,8 +282,10 @@ def main():
         print(colored("You lose", "red"))
 
     else:
-        complete_time = str(end_time - start_time)
-        add_name_and_time_to_leaderboard(name, complete_time)
+        time_taken = end_time - start_time
+        complete_time = str(time_taken)
+        time_in_seconds = time_taken.total_seconds()
+        add_name_and_time_to_leaderboard(name, complete_time, time_in_seconds)
         print(colored("Congrats!!", "green"))
 
 menu()
