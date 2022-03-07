@@ -3,7 +3,8 @@ from leaderboard import add_name_and_time_to_leaderboard, print_top_players
 from termcolor import colored
 from player_board import PlayerBoard
 from place_ship import choose_placement_of_ship
-from utilis import attack
+from utilis import attack, clearConsole
+from time import sleep
 
 ship_sizes: list = [2, 3, 3, 4, 5]
 
@@ -75,11 +76,12 @@ def main():
     player = PlayerBoard("~", name)
     computer = PlayerBoard(" ")
     
-
+    clearConsole()
     # Place the ships on the board
     for size in ship_sizes:
         choose_placement_of_ship(player, size)
         choose_placement_of_ship(computer, size)
+        clearConsole()
 
     # print players board with all ships on it.
     player.print_board()
@@ -98,10 +100,12 @@ def main():
             attack(player)
             player.print_board()
             current_player = player
+            
 
         else:
             attack(computer)
             computer.print_board()
+            sleep(2)
             current_player = computer
 
     # get the time when the game ends
