@@ -5,6 +5,7 @@ import random
 from utilis import clear_console
 from time import sleep
 
+
 def choose_placement_of_ship(players_board, size):
     """
     Function that gets users placement options
@@ -29,7 +30,10 @@ def choose_placement_of_ship(players_board, size):
         # In starting point check to see if there is an integer
         # in NUMS as the first character and letter in LETTERS
         try:
-            if (starting_point[1].lower() in LETTERS) and (starting_point[0] in NUMS) and (direction.lower() in DIRECTIONS):
+            letter = starting_point[1].lower()
+            num = starting_point[0]
+            direct_lower = direction.lower()
+            if letter in LETTERS and num in NUMS and direct_lower in DIRECTIONS:
                 pass
             else:
                 raise ValueError()
@@ -37,7 +41,8 @@ def choose_placement_of_ship(players_board, size):
         except ValueError:
             clear_console()
             print(colored(
-                "Please choose coordinates with a number (0-9) followed by a letter (a-j) e.g. 7j",
+                """Please choose attack coordinates.
+A number (0-9) followed by a letter (a-j) e.g 9c""",
                 "red"))
             sleep(1)
             choose_placement_of_ship(players_board, size)
@@ -63,6 +68,7 @@ def ship_wont_fit_on_board(players_board, size):
     # choose placement again
     choose_placement_of_ship(players_board, size)
 
+
 def check_ship_already_placed(players_board, y_coord, x_coord, size):
     """
     Checks if another ship is in the way and if not return coords.
@@ -83,11 +89,14 @@ def check_ship_already_placed(players_board, y_coord, x_coord, size):
     if space_symbol != players_board.symbol:
         if players_board.name != "computer":
             clear_console()
-            print(colored("You already have a ship there please try again", "red"))
+            print(colored(
+                "You already have a ship there please try again",
+                "red"))
         choose_placement_of_ship(players_board, size)
         return False
     else:
         return [y_coord, x_coord]
+
 
 def place_ship(players_board, starting_point, direction, size):
     """
@@ -96,7 +105,8 @@ def place_ship(players_board, starting_point, direction, size):
 
     players_board = the current players PlayerBoard
     starting_point = a sting containing coords to place the ship (e.g. "7j")
-    direction = the direction of the ship should go in (e.g. "up", "down", "left", "right")
+    direction = the direction of the ship should go in
+                    (e.g. "up", "down", "left", "right")
     size = size of the ship being placed
     """
 
@@ -174,7 +184,6 @@ def place_ship(players_board, starting_point, direction, size):
                         spaces.append(ship_there)
                 break
 
-
         # Placing a ship in the left direction
         elif direction_upper == "LEFT":
             # If the ship runs off the board try again
@@ -197,7 +206,6 @@ def place_ship(players_board, starting_point, direction, size):
                         spaces.append(ship_there)
                 break
 
-    
         # If it'll fit and no ships in the way place the ship
         for coords in spaces:
             players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
