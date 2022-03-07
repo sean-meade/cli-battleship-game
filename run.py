@@ -19,9 +19,12 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
                                                   
 """)
     print_top_players()
+
     while True:
         try:
+            # ask the user for an input
             instruction = input(colored("Enter p to play or i for instructions:\n", "green")).upper()
+            # if its i give the instructions
             if instruction == "I":
                 print(colored("""
     1. Enter the name you want to show on the leaderboard. You
@@ -43,15 +46,19 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
     4. The game is won when a player get 17 hits on their opponents 
         board\n""", "yellow"))
 
+            # if its p break the while loop and start the game
             elif instruction == "P":
                 break
+            # otherwise raise an error
             else:
                 raise ValueError()
+        # if there is an error prompt the user to use a proper command
         except (AttributeError, ValueError):
             print(colored("Please type a proper command", "red"))
 
     # User pressed on p
     main()
+
 
 def main():
     """
@@ -59,9 +66,12 @@ def main():
     """
     # Get username and create PlayerBoards for both player and computer
     name = input(colored("Please give your username:\n", "green"))
+    # check to see if the user used the same name as computer and retry
     if name == "comp":
         print(colored("That's the computers name sorry you'll have to pick another one", "red"))
         main()
+
+    # create boards for player and computer
     player = PlayerBoard("~", name)
     computer = PlayerBoard(" ")
     
@@ -71,14 +81,19 @@ def main():
         choose_placement_of_ship(player, size)
         choose_placement_of_ship(computer, size)
 
+    # print players board with all ships on it.
     player.print_board()
+
     # Set current player (may randomize this)
     current_player = player
 
+    # Get the time of when the game starts
     start_time = datetime.now()
     # While there are still ships (or parts of ships) to attack continue the attack back and forth
     while((player.hits < sum(ship_sizes)) and (computer.hits < sum(ship_sizes))):
 
+        # The user and computer attack each other, print the
+        # board of opponent and then change to next player
         if current_player.name == "comp":
             attack(player)
             player.print_board()
@@ -89,12 +104,15 @@ def main():
             computer.print_board()
             current_player = computer
 
+    # get the time when the game ends
     end_time = datetime.now()
 
     # Announce if the player wins or loses
     if current_player.name != "comp":
         print(colored("You lose", "red"))
 
+    # If the player wins get the time taken to win and update
+    # google sheets with the name and time
     else:
         time_taken = end_time - start_time
         complete_time = str(time_taken)

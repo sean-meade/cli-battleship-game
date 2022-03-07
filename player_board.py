@@ -35,7 +35,10 @@ class PlayerBoard:
 
         # Hides the computers ships when printed to the terminal
         if self.name == "comp":
+            # create list to hold hidden board while printing
             whole_board: list = [[] * COLUMNS for _ in range(ROWS)]
+            # if there is a ship symbol on the comp board replace
+            # it with a blank space (" ") when printing
             for x in range(len(self.board)):
                 for y in range(len(self.board)):
                     if self.board[x][y] == '#':
@@ -45,6 +48,7 @@ class PlayerBoard:
         else:
             whole_board = self.board
         
+        # print the board to the screen
         for line_num, line in enumerate(whole_board):
             # Prints the top line of the board
             if line_num == 0:

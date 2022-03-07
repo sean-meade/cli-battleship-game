@@ -7,6 +7,7 @@ Programming:
     - make it so someone can use 3e or e3
     - Add place ship function to class
     - create unit test to periodically check the board functionality (not required for grading)
+    - Ask player do they want to play again
 
 README:
 - Existing features
