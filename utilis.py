@@ -51,17 +51,13 @@ def attack(opponents_board):
             else:
                 raise ValueError()
             # if not get player to try again
-        except:
+        except ValueError():
             clearConsole()
             print(colored(
                 "Please choose coordinates with a number (0-9) followed by a letter (a-j)",
                 "red"))
             sleep(1)
             attack(opponents_board)
-        # check to see if second character is a letter in LETTERS
-        # if not get player to try again
-        attack_coords[1].lower() in LETTERS
-        attack_coords[0] in NUMS
         
     else:
         attack_coords = comp_random_choice_of_coords()
