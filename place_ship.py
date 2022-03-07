@@ -38,7 +38,7 @@ def choose_placement_of_ship(players_board, size):
             else:
                 raise ValueError()
         # if not get player to try again
-        except ValueError:
+        except (ValueError, IndexError):
             clear_console()
             print(colored(
                 """Please choose attack coordinates.
@@ -211,7 +211,7 @@ def place_ship(players_board, starting_point, direction, size):
             players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
 
     # Catch any errors and ask user to go again
-    except (AttributeError, ValueError):
+    except (AttributeError, ValueError, IndexError):
         print(
             colored(
                 "Use valid coords a number (0-9) followed by a letter (a-j) e.g. 3e",
