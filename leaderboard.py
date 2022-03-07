@@ -44,12 +44,16 @@ def print_top_players():
     # 'No players have played yet'
     try:
         if leader_board[0]:
-            print("{:15s} {:20s}".format("", "Leaderboard"))
+            # Leaderboard Heading
+            print(" " * 15, "Leaderboard")
+            # Titles
             print("{:5s} {:20s} {:30s}".format("", "Name:", "Time:\n"))
+            # Pick top 3 players and display
             for player in range(3):
                 print(colored("{:5s} {:20s} {:30s}"
                     .format("", leader_board[player][0], leader_board[player][1] + "\n"), "blue"))
         else:
             raise IndexError()
+    # Otherwise tell the user no players to show
     except IndexError:
-        print("{:10s} {:20s}".format("", "No players have played yet"))
+        print(" " * 15, "No players to show")

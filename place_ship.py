@@ -19,7 +19,7 @@ def choose_placement_of_ship(players_board, size):
         direction = DIRECTIONS[random.randint(0, 3)]
     else:
         players_board.print_board()
-        print(f"\n The ship you're currently placing need {size} spaces")
+        print(f"\n The ship you're currently placing needs {size} spaces")
         starting_point = input(
             colored("Choose starting point of ship (e.g. 6f):\n", "green"))
         # get direction from user

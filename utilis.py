@@ -4,10 +4,11 @@ from termcolor import colored
 import os
 from time import sleep
 
+
 def convert_coords(coords):
     """
     Converts the number and letter given from the user into usable ints
-    
+
     coords = a string containing coordinates on the board (e.g. "5d")
 
     returns two integers that represent the position of the board
@@ -43,10 +44,15 @@ def attack(opponents_board):
     # If player is attacking the computer
     if opponents_board.name == "computer":
         # prompt user to choose attack coordinates
-        attack_coords = input(colored("Choose coordinates to attack e.g. 6f:\n", "green"))
+        attack_coords = input(
+                            colored(
+                                "Choose coordinates to attack e.g. 6f:\n",
+                                "green"))
 
         try:
-            if (attack_coords[1].lower() in LETTERS) and (attack_coords[0] in NUMS):
+            letter = attack_coords[1].lower()
+            number = attack_coords[0]
+            if (letter in LETTERS) and (number in NUMS):
                 pass
             else:
                 raise ValueError()
@@ -54,12 +60,13 @@ def attack(opponents_board):
         except (ValueError, TypeError, IndexError):
             clear_console()
             print(colored(
-                "Please choose coordinates with a number (0-9) followed by a letter (a-j) e.g 9c",
+                """Please choose attack coordinates.
+A number (0-9) followed by a letter (a-j) e.g 9c""",
                 "red"))
-            sleep(1)
+            sleep(2)
             attack(opponents_board)
             return
-        
+
     else:
         attack_coords = comp_random_choice_of_coords()
 
@@ -72,7 +79,8 @@ def attack(opponents_board):
     else:
         name = "You"
 
-    # Check if its a hit ("x"), a miss ("o"), or if player has already attacked there
+    # Check if its a hit ("x"), a miss ("o"), or if
+    # player has already attacked there
     if target == opponents_board.symbol:
         clear_console()
         opponents_board.board[y_coords][x_coords] = colored("o", "red")
@@ -88,7 +96,9 @@ def attack(opponents_board):
         sleep(2)
     else:
         if opponents_board.name == "computer":
-            print(colored("Sorry you've already attacked there try again", "red"))
+            print(colored(
+                "Sorry you've already attacked there try again",
+                "red"))
         sleep(1)
         attack(opponents_board)
 
