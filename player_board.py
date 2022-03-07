@@ -1,11 +1,11 @@
 # Constant variables for choosing coords on the board (LETTERS) and
 # choosing a direction for placing a ship (DIRECTIONS)
-LETTERS: list = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
-DIRECTIONS: list = ["up", "down", "right", "left"]
+LETTERS = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
+DIRECTIONS = ["up", "down", "right", "left"]
 NUMS = [str(x) for x in list(range(0, 10))]
 
 ROWS = COLUMNS = 10
-SHIP_CHARACTER: str = "#"
+SHIP_CHARACTER = "#"
 
 line_spacer = f"\t|{' '*32}|"
 bottom_of_board = f"\t|{'_'*32}|"
@@ -20,12 +20,11 @@ class PlayerBoard:
     name = a string that's comp by default
     """
     # Create player board, set name, symbol and hits
-    def __init__(self, symbol: str, name="computer"):
-        self.board: list = [[symbol] * COLUMNS for _ in range(ROWS)]
-        self.name: str = name
+    def __init__(self, symbol, name="computer"):
+        self.board = [[symbol] * COLUMNS for _ in range(ROWS)]
+        self.name = name
         self.symbol = symbol
         self.hits = 0
-
 
     def print_board(self):
         """
@@ -36,7 +35,7 @@ class PlayerBoard:
         # Hides the computers ships when printed to the terminal
         if self.name == "computer":
             # create list to hold hidden board while printing
-            whole_board: list = [[] * COLUMNS for _ in range(ROWS)]
+            whole_board = [[] * COLUMNS for _ in range(ROWS)]
             # if there is a ship symbol on the comp board replace
             # it with a blank space (" ") when printing
             for x in range(len(self.board)):
@@ -47,7 +46,7 @@ class PlayerBoard:
                         whole_board[x].append(self.board[x][y])
         else:
             whole_board = self.board
-        
+
         # print the board to the screen
         for line_num, line in enumerate(whole_board):
             # Prints the top line of the board
