@@ -3,7 +3,7 @@ from leaderboard import add_name_and_time_to_leaderboard, print_top_players
 from termcolor import colored
 from player_board import PlayerBoard
 from place_ship import choose_placement_of_ship
-from utilis import attack, clearConsole
+from utilis import attack, clear_console
 from time import sleep
 
 ship_sizes: list = [2, 3, 3, 4, 5]
@@ -13,6 +13,7 @@ def menu():
     """
     Opening screen to the game
     """
+    clear_console()
     print("""
 ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____ 
 |__] |__|  |   |  |    |___ [__  |__| | |__] [__  
@@ -24,7 +25,10 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
     while True:
         try:
             # ask the user for an input
-            instruction = input(colored("Enter p to play or i for instructions:\n", "green")).upper()
+            instruction = input(
+                colored(
+                    "Type p to play or i for instructions and press Enter:\n",
+                    "green")).upper()
             # if its i give the instructions
             if instruction == "I":
                 print(colored("""
@@ -55,10 +59,13 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
                 raise ValueError()
         # if there is an error prompt the user to use a proper command
         except (AttributeError, ValueError):
-            print(colored("Please type a proper command", "red"))
+            print(
+                colored(
+                    "Please type p to play or i for instructions and press Enter",
+                    "red"))
 
     # User pressed on p
-    clearConsole()
+    clear_console()
     main()
 
 
@@ -69,20 +76,23 @@ def main():
     # Get username and create PlayerBoards for both player and computer
     name = input(colored("Please give your username:\n", "green"))
     # check to see if the user used the same name as computer and retry
-    if name == "comp":
-        print(colored("That's the computers name sorry you'll have to pick another one", "red"))
+    if name == "computer":
+        print(
+            colored(
+                "That's the computers name sorry you'll have to pick another one",
+                "red"))
         main()
 
     # create boards for player and computer
     player = PlayerBoard("~", name)
     computer = PlayerBoard(" ")
     
-    clearConsole()
+    clear_console()
     # Place the ships on the board
     for size in ship_sizes:
         choose_placement_of_ship(player, size)
         choose_placement_of_ship(computer, size)
-        clearConsole()
+        clear_console()
 
     # Set current player (may randomize this)
     current_player = player
@@ -94,7 +104,7 @@ def main():
 
         # The user and computer attack each other, print the
         # board of opponent and then change to next player
-        if current_player.name == "comp":
+        if current_player.name == "computer":
             attack(player)
             current_player = player
 
@@ -107,8 +117,8 @@ def main():
     end_time = datetime.now()
 
     # Announce if the player wins or loses
-    if current_player.name != "comp":
-        print(colored("You lose", "red"))
+    if current_player.name != "computer":
+        print(colored("You lose...", "red"))
 
     # If the player wins get the time taken to win and update
     # google sheets with the name and time
@@ -117,6 +127,9 @@ def main():
         complete_time = str(time_taken)
         time_in_seconds = time_taken.total_seconds()
         add_name_and_time_to_leaderboard(name, complete_time, time_in_seconds)
-        print(colored("Congrats!!", "green"))
+        print(colored(f"\tCongratulations you won!!\nYour time has been recorded", "green"))
+
+    input("Press any key to start again.")
+    menu()
 
 menu()

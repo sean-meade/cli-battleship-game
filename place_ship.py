@@ -2,7 +2,7 @@ from player_board import DIRECTIONS, LETTERS, NUMS, COLUMNS, SHIP_CHARACTER
 from termcolor import colored
 from utilis import comp_random_choice_of_coords, convert_coords
 import random
-from utilis import clearConsole
+from utilis import clear_console
 from time import sleep
 
 def choose_placement_of_ship(players_board, size):
@@ -14,17 +14,17 @@ def choose_placement_of_ship(players_board, size):
 
     # If it's the computer randomly choose placement options
     # otherwise ask the user for theirs
-    if players_board.name == "comp":
+    if players_board.name == "computer":
         starting_point = comp_random_choice_of_coords()
         direction = DIRECTIONS[random.randint(0, 3)]
     else:
         players_board.print_board()
-        print(f"\n Place ship of size {size}")
+        print(f"\n The ship you're currently placing need {size} spaces")
         starting_point = input(
             colored("Choose starting point of ship (e.g. 6f):\n", "green"))
         # get direction from user
         direction = input(colored(
-            "\nChoose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n",
+            "\nChoose the direction you want the ship to point (e.g. UP, DOWN, LEFT, or RIGHT):\n",
             "green"))
         # In starting point check to see if there is an integer
         # in NUMS as the first character and letter in LETTERS
@@ -34,10 +34,10 @@ def choose_placement_of_ship(players_board, size):
             else:
                 raise ValueError()
         # if not get player to try again
-        except:
-            clearConsole()
+        except ValueError:
+            clear_console()
             print(colored(
-                "Please choose coordinates with a number (0-9) followed by a letter (a-j)",
+                "Please choose coordinates with a number (0-9) followed by a letter (a-j) e.g. 7j",
                 "red"))
             sleep(1)
             choose_placement_of_ship(players_board, size)
@@ -55,8 +55,11 @@ def ship_wont_fit_on_board(players_board, size):
     size = int: spaces the ship takes up
     """
     # If the current player is user (not comp) then print
-    if players_board.name != "comp":
-        print(colored("ship won't fit on board try again", "red"))
+    if players_board.name != "computer":
+        print(
+            colored(
+                "That ship won't fit on board that way please try again",
+                "red"))
     # choose placement again
     choose_placement_of_ship(players_board, size)
 
@@ -78,9 +81,9 @@ def check_ship_already_placed(players_board, y_coord, x_coord, size):
     # if its different from the symbol the board was created with
     # then restart placement of ship otherwise return x and y coords
     if space_symbol != players_board.symbol:
-        if players_board.name != "comp":
-            clearConsole()
-            print(colored("You already have a ship there try again", "red"))
+        if players_board.name != "computer":
+            clear_console()
+            print(colored("You already have a ship there please try again", "red"))
         choose_placement_of_ship(players_board, size)
         return False
     else:
@@ -194,19 +197,15 @@ def place_ship(players_board, starting_point, direction, size):
                         spaces.append(ship_there)
                 break
 
-        # # Otherwise prompt user to use proper direction and call
-        # # choose_placement_of_ship again
-        # else:
-        #     if players_board.name != "comp":
-        #         print(colored("You need to choose up, down, left, or right as a direction.", "red"))
-        #     choose_placement_of_ship(players_board, size)
-            
-
+    
         # If it'll fit and no ships in the way place the ship
         for coords in spaces:
             players_board.board[coords[0]][coords[1]] = SHIP_CHARACTER
 
     # Catch any errors and ask user to go again
     except (AttributeError, ValueError):
-        print(colored("Use valid coords a number (0-9) followed by a letter (a-j) e.g. 3e", "red"))
+        print(
+            colored(
+                "Use valid coords a number (0-9) followed by a letter (a-j) e.g. 3e",
+                "red"))
         choose_placement_of_ship(players_board, size)

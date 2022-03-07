@@ -20,7 +20,7 @@ class PlayerBoard:
     name = a string that's comp by default
     """
     # Create player board, set name, symbol and hits
-    def __init__(self, symbol: str, name="comp"):
+    def __init__(self, symbol: str, name="computer"):
         self.board: list = [[symbol] * COLUMNS for _ in range(ROWS)]
         self.name: str = name
         self.symbol = symbol
@@ -34,7 +34,7 @@ class PlayerBoard:
         """
 
         # Hides the computers ships when printed to the terminal
-        if self.name == "comp":
+        if self.name == "computer":
             # create list to hold hidden board while printing
             whole_board: list = [[] * COLUMNS for _ in range(ROWS)]
             # if there is a ship symbol on the comp board replace
