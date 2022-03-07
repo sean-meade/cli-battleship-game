@@ -2,13 +2,8 @@ To Do:
 
 Programming:
 - Rearrange the functions to mirror flow on the game.
-- Separate functions into different files
-- Put all numbers as constants at top of files
-- make it so player cant use 'comp' as username
-- add colour to terminal
 - Add clear screen function
 - Nice to have:
-    - create leader board using Google sheets
     - make it so someone can use 3e or e3
     - Add place ship function to class
     - create unit test to periodically check the board functionality (not required for grading)
