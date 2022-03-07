@@ -119,4 +119,4 @@ def main():
         add_name_and_time_to_leaderboard(name, complete_time, time_in_seconds)
         print(colored("Congrats!!", "green"))
 
-main()
+menu()
