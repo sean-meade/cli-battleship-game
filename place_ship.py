@@ -22,12 +22,14 @@ def choose_placement_of_ship(players_board, size):
         print(f"\n Place ship of size {size}")
         starting_point = input(
             colored("Choose starting point of ship (e.g. 6f):\n", "green"))
+        # get direction from user
+        direction = input(colored(
+            "\nChoose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n",
+            "green"))
         # In starting point check to see if there is an integer
         # in NUMS as the first character and letter in LETTERS
         try:
-            if (starting_point[1].lower() in LETTERS) and (starting_point[0] in NUMS):
-                print(starting_point[1].lower() in LETTERS)
-                print(int(starting_point[0]) in NUMS)
+            if (starting_point[1].lower() in LETTERS) and (starting_point[0] in NUMS) and (direction.lower() in DIRECTIONS):
                 pass
             else:
                 raise ValueError()
@@ -39,10 +41,7 @@ def choose_placement_of_ship(players_board, size):
                 "red"))
             sleep(1)
             choose_placement_of_ship(players_board, size)
-        # get direction from user
-        direction = input(colored(
-            "\nChoose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n",
-            "green"))
+        
 
     # Place ship on board
     place_ship(players_board, starting_point, direction, size)
