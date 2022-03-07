@@ -51,7 +51,7 @@ def attack(opponents_board):
             else:
                 raise ValueError()
             # if not get player to try again
-        except ValueError():
+        except (ValueError, TypeError):
             clearConsole()
             print(colored(
                 "Please choose coordinates with a number (0-9) followed by a letter (a-j)",
@@ -86,6 +86,7 @@ def attack(opponents_board):
         sleep(2)
     else:
         print(colored("Sorry you've already attacked there", "red"))
+        sleep(1)
         attack(opponents_board)
 
 
