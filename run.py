@@ -84,9 +84,6 @@ def main():
         choose_placement_of_ship(computer, size)
         clearConsole()
 
-    # print players board with all ships on it.
-    player.print_board()
-
     # Set current player (may randomize this)
     current_player = player
 
@@ -99,16 +96,12 @@ def main():
         # board of opponent and then change to next player
         if current_player.name == "comp":
             attack(player)
-            player.print_board()
             current_player = player
-            clearConsole()
 
         else:
             attack(computer)
-            computer.print_board()
             sleep(2)
             current_player = computer
-            clearConsole()
 
     # get the time when the game ends
     end_time = datetime.now()
@@ -126,4 +119,4 @@ def main():
         add_name_and_time_to_leaderboard(name, complete_time, time_in_seconds)
         print(colored("Congrats!!", "green"))
 
-menu()
+main()

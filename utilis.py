@@ -2,6 +2,7 @@ import random
 from player_board import LETTERS, NUMS, SHIP_CHARACTER
 from termcolor import colored
 import os
+from time import sleep
 
 def convert_coords(coords):
     """
@@ -35,38 +36,61 @@ def attack(opponents_board):
     players_board = current players PlayerBoard
     attack_coords = a string containing coordinates on the board (e.g. "5d")
     """
-    try:
-        # If player is attacking the computer
-        if opponents_board.name == "comp":
-            # prompt user to choose attack coordinates
-            attack_coords = input(colored("Choose attach coords (e.g. 3e, 7f):\n", "green"))
+    clearConsole()
+    print(f"{opponents_board.name} is being attacked!")
+    opponents_board.print_board()
 
-            # check to see if second character is a letter in LETTERS
+    # If player is attacking the computer
+    if opponents_board.name == "comp":
+        # prompt user to choose attack coordinates
+        attack_coords = input(colored("Choose attach coords (e.g. 3e, 7f):\n", "green"))
+
+        try:
+            if (attack_coords[1].lower() in LETTERS) and (attack_coords[0] in NUMS):
+                pass
+            else:
+                raise ValueError()
             # if not get player to try again
-            attack_coords[1].lower() in LETTERS
-            attack_coords[0] in NUMS
-            
-        else:
-            attack_coords = comp_random_choice_of_coords()
-
-        x_coords, y_coords = convert_coords(attack_coords)
-        target = opponents_board.board[y_coords][x_coords]
-
-        # Check if its a hit ("x"), a miss ("o"), or if player has already attacked there
-        if target == opponents_board.symbol:
-            opponents_board.board[y_coords][x_coords] = "o"
-        elif target == SHIP_CHARACTER:
-            opponents_board.board[y_coords][x_coords] = "X"
-            opponents_board.hits += 1
-        else:
-            print(colored("Sorry you've already attacked there", "red"))
+        except:
+            clearConsole()
+            print(colored(
+                "Please choose coordinates with a number (0-9) followed by a letter (a-j)",
+                "red"))
+            sleep(1)
             attack(opponents_board)
-            
-    except:
-        print(colored("Please choose a letter between a and j", "red"))
-        attack(opponents_board)
+        # check to see if second character is a letter in LETTERS
+        # if not get player to try again
+        attack_coords[1].lower() in LETTERS
+        attack_coords[0] in NUMS
+        
+    else:
+        attack_coords = comp_random_choice_of_coords()
 
-    
+    x_coords, y_coords = convert_coords(attack_coords)
+    target = opponents_board.board[y_coords][x_coords]
+
+    if opponents_board.name != "comp":
+        name = "Computer"
+    else:
+        name = "You"
+
+    # Check if its a hit ("x"), a miss ("o"), or if player has already attacked there
+    if target == opponents_board.symbol:
+        clearConsole()
+        opponents_board.board[y_coords][x_coords] = colored("o", "red")
+        print(f"{name} Missed: o")
+        opponents_board.print_board()
+        sleep(2)
+    elif target == SHIP_CHARACTER:
+        clearConsole()
+        opponents_board.board[y_coords][x_coords] = colored("X", "green")
+        opponents_board.hits += 1
+        print(colored(f"{name} Hit: X", "green"))
+        opponents_board.print_board()
+        sleep(2)
+    else:
+        print(colored("Sorry you've already attacked there", "red"))
+        attack(opponents_board)
 
 
 def clearConsole():

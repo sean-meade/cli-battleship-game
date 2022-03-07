@@ -41,7 +41,7 @@ def choose_placement_of_ship(players_board, size):
                 "red"))
             sleep(1)
             choose_placement_of_ship(players_board, size)
-        
+            return
 
     # Place ship on board
     place_ship(players_board, starting_point, direction, size)
@@ -79,6 +79,7 @@ def check_ship_already_placed(players_board, y_coord, x_coord, size):
     # then restart placement of ship otherwise return x and y coords
     if space_symbol != players_board.symbol:
         if players_board.name != "comp":
+            clearConsole()
             print(colored("You already have a ship there try again", "red"))
         choose_placement_of_ship(players_board, size)
         return False
@@ -193,11 +194,12 @@ def place_ship(players_board, starting_point, direction, size):
                         spaces.append(ship_there)
                 break
 
-        # Otherwise prompt user to use proper direction and call
-        # choose_placement_of_ship again
-        else:
-            print(colored("You need to choose up, down, left, or right as a direction.", "red"))
-            choose_placement_of_ship(players_board, size)
+        # # Otherwise prompt user to use proper direction and call
+        # # choose_placement_of_ship again
+        # else:
+        #     if players_board.name != "comp":
+        #         print(colored("You need to choose up, down, left, or right as a direction.", "red"))
+        #     choose_placement_of_ship(players_board, size)
             
 
         # If it'll fit and no ships in the way place the ship
