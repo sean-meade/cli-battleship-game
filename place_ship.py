@@ -2,6 +2,7 @@ from player_board import DIRECTIONS, LETTERS, NUMS, COLUMNS, SHIP_CHARACTER
 from termcolor import colored
 from utilis import comp_random_choice_of_coords, convert_coords
 import random
+from utilis import clearConsole
 
 def choose_placement_of_ship(players_board, size):
     """
@@ -12,29 +13,32 @@ def choose_placement_of_ship(players_board, size):
 
     # If it's the computer randomly choose placement options
     # otherwise ask the user for theirs
-    # if players_board.name == "comp":
-    starting_point = comp_random_choice_of_coords()
-    direction = DIRECTIONS[random.randint(0, 3)]
-    # else:
-    #     players_board.print_board()
-    #     print(f"\n Place ship of size {size}")
-    #     starting_point = input(
-    #         colored("Choose starting point of ship (e.g. 6f):\n", "green"))
-    #     # In starting point check to see if there is an integer
-    #     # in NUMS as the first character and letter in LETTERS
-    #     try:
-    #         starting_point[1].lower() in LETTERS
-    #         int(starting_point[0]) in NUMS
-    #     # if not get player to try again
-    #     except:
-    #         print(colored(
-    #             "Please choose coordinates with a number (0-9) followed by a letter (a-j)",
-    #             "red"))
-    #         choose_placement_of_ship(players_board, size)
-    #     # get direction from user
-    #     direction = input(colored(
-    #         "\nChoose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n",
-    #         "green"))
+    if players_board.name == "comp":
+        starting_point = comp_random_choice_of_coords()
+        direction = DIRECTIONS[random.randint(0, 3)]
+    else:
+        players_board.print_board()
+        print(f"\n Place ship of size {size}")
+        starting_point = input(
+            colored("Choose starting point of ship (e.g. 6f):\n", "green"))
+        # In starting point check to see if there is an integer
+        # in NUMS as the first character and letter in LETTERS
+        try:
+            if starting_point[1].lower() in LETTERS and int(starting_point[0]) in NUMS:
+                pass
+            else:
+                raise ValueError()
+        # if not get player to try again
+        except:
+            clearConsole()
+            print(colored(
+                "Please choose coordinates with a number (0-9) followed by a letter (a-j)",
+                "red"))
+            choose_placement_of_ship(players_board, size)
+        # get direction from user
+        direction = input(colored(
+            "\nChoose direction of the ship (e.g. UP, DOWN, LEFT, or RIGHT):\n",
+            "green"))
 
     # Place ship on board
     place_ship(players_board, starting_point, direction, size)

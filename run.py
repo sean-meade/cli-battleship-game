@@ -58,6 +58,7 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
             print(colored("Please type a proper command", "red"))
 
     # User pressed on p
+    clearConsole()
     main()
 
 
@@ -100,13 +101,14 @@ def main():
             attack(player)
             player.print_board()
             current_player = player
-            
+            clearConsole()
 
         else:
             attack(computer)
             computer.print_board()
             sleep(2)
             current_player = computer
+            clearConsole()
 
     # get the time when the game ends
     end_time = datetime.now()
