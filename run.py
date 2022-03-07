@@ -6,7 +6,7 @@ from place_ship import choose_placement_of_ship
 from utilis import attack, clear_console
 from time import sleep
 
-ship_sizes: list = [2, 3, 3, 4, 5]
+ship_sizes = [2, 3, 3, 4, 5]
 
 
 def menu():
@@ -15,10 +15,9 @@ def menu():
     """
     clear_console()
     print("""
-___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____ 
-|__] |__|  |   |  |    |___ [__  |__| | |__] [__  
-|__] |  |  |   |  |___ |___ ___] |  | | |    ___] 
-                                                  
+___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
+|__] |__|  |   |  |    |___ [__  |__| | |__] [__
+|__] |  |  |   |  |___ |___ ___] |  | | |    ___]\n
 """)
     print_top_players()
 
@@ -35,20 +34,20 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
     1. Enter the name you want to show on the leaderboard. You
         can use any characters you want
     2. Place your ships on the board:
-        - You will be told the size of the ship you have to place 
+        - You will be told the size of the ship you have to place
         (there are 5 in total).
-        - You will asked for a starting point this is a point on the 
+        - You will asked for a starting point this is a point on the
         board that the ship starts at. You select this point with a
-        number (0 - 9) and a letter (a - j), which represent the x 
+        number (0 - 9) and a letter (a - j), which represent the x
         and the y axis respectively.
         - You will then be asked for a direction to place your your
         ship (e.g. "up", "down", "left", "right").
         - The ship will start at the starting point and will take up
         the size of the ship in direction input.
-    3. Attack the computers side of the board. You can attack the 
+    3. Attack the computers side of the board. You can attack the
         computer by using the coordinates similar to placing your
         ships. An x represents a hit and an o represents a miss.
-    4. The game is won when a player get 17 hits on their opponents 
+    4. The game is won when a player get 17 hits on their opponents
         board\n""", "yellow"))
 
             # if its p break the while loop and start the game
@@ -86,7 +85,7 @@ def main():
     # create boards for player and computer
     player = PlayerBoard("~", name)
     computer = PlayerBoard(" ")
-    
+
     clear_console()
     # Place the ships on the board
     for size in ship_sizes:
@@ -99,7 +98,8 @@ def main():
 
     # Get the time of when the game starts
     start_time = datetime.now()
-    # While there are still ships (or parts of ships) to attack continue the attack back and forth
+    # While there are still ships (or parts of ships) to
+    # attack continue the attack back and forth
     while((player.hits < sum(ship_sizes)) and (computer.hits < sum(ship_sizes))):
 
         # The user and computer attack each other, print the
