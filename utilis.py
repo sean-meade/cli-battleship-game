@@ -39,6 +39,7 @@ def attack(opponents_board):
     """
     clear_console()
     print(f"{opponents_board.name} is being attacked!")
+    print("Opponent is deciding on their attack...")
     opponents_board.print_board()
 
     # If player is attacking the computer
