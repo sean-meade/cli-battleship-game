@@ -3,6 +3,7 @@ from termcolor import colored
 from utilis import comp_random_choice_of_coords, convert_coords
 import random
 from utilis import clearConsole
+from time import sleep
 
 def choose_placement_of_ship(players_board, size):
     """
@@ -24,7 +25,9 @@ def choose_placement_of_ship(players_board, size):
         # In starting point check to see if there is an integer
         # in NUMS as the first character and letter in LETTERS
         try:
-            if starting_point[1].lower() in LETTERS and int(starting_point[0]) in NUMS:
+            if (starting_point[1].lower() in LETTERS) and (starting_point[0] in NUMS):
+                print(starting_point[1].lower() in LETTERS)
+                print(int(starting_point[0]) in NUMS)
                 pass
             else:
                 raise ValueError()
@@ -34,6 +37,7 @@ def choose_placement_of_ship(players_board, size):
             print(colored(
                 "Please choose coordinates with a number (0-9) followed by a letter (a-j)",
                 "red"))
+            sleep(1)
             choose_placement_of_ship(players_board, size)
         # get direction from user
         direction = input(colored(
