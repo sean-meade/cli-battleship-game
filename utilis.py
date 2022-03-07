@@ -51,18 +51,20 @@ def attack(opponents_board):
             else:
                 raise ValueError()
             # if not get player to try again
-        except (ValueError, TypeError):
+        except (ValueError, TypeError, IndexError):
             clearConsole()
             print(colored(
                 "Please choose coordinates with a number (0-9) followed by a letter (a-j)",
                 "red"))
             sleep(1)
             attack(opponents_board)
+            return
         
     else:
         attack_coords = comp_random_choice_of_coords()
 
     x_coords, y_coords = convert_coords(attack_coords)
+    print(x_coords, y_coords)
     target = opponents_board.board[y_coords][x_coords]
 
     if opponents_board.name != "comp":
@@ -85,7 +87,8 @@ def attack(opponents_board):
         opponents_board.print_board()
         sleep(2)
     else:
-        print(colored("Sorry you've already attacked there", "red"))
+        if opponents_board.name == "comp":
+            print(colored("Sorry you've already attacked there", "red"))
         sleep(1)
         attack(opponents_board)
 
