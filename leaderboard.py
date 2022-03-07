@@ -50,8 +50,11 @@ def print_top_players():
             print("{:5s} {:20s} {:30s}".format("", "Name:", "Time:\n"))
             # Pick top 3 players and display
             for player in range(3):
-                print(colored("{:5s} {:20s} {:30s}"
-                    .format("", leader_board[player][0], leader_board[player][1] + "\n"), "blue"))
+                player_n = leader_board[player]
+                print(
+                    colored(
+                        "{:20s} {:30s}".format(" " * 5 + player_n[0],
+                                               player_n[1] + "\n"), "blue"))
         else:
             raise IndexError()
     # Otherwise tell the user no players to show
