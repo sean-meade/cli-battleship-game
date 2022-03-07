@@ -127,7 +127,9 @@ def main():
         complete_time = str(time_taken)
         time_in_seconds = time_taken.total_seconds()
         add_name_and_time_to_leaderboard(name, complete_time, time_in_seconds)
-        print(colored(f"\tCongratulations you won!!\nYour time has been recorded", "green"))
+        print(colored(
+            "\tCongratulations you won!!\nYour time has been recorded",
+            "green"))
 
     input("Press any key to start again.")
     menu()

@@ -43,10 +43,13 @@ def print_top_players():
     # Tries to print the leaderboard and if it cant prints the statement:
     # 'No players have played yet'
     try:
-        print("{:15s} {:20s}".format("", "Leaderboard"))
-        print("{:5s} {:20s} {:30s}".format("", "Name:", "Time:\n"))
-        for player in range(3):
-            print(colored("{:5s} {:20s} {:30s}"
-                .format("", leader_board[player][0], leader_board[player][1] + "\n"), "blue"))
-    except:
+        if leader_board[0]:
+            print("{:15s} {:20s}".format("", "Leaderboard"))
+            print("{:5s} {:20s} {:30s}".format("", "Name:", "Time:\n"))
+            for player in range(3):
+                print(colored("{:5s} {:20s} {:30s}"
+                    .format("", leader_board[player][0], leader_board[player][1] + "\n"), "blue"))
+        else:
+            raise IndexError()
+    except IndexError:
         print("{:10s} {:20s}".format("", "No players have played yet"))
