@@ -71,7 +71,6 @@ A number (0-9) followed by a letter (a-j) e.g 9c""",
         attack_coords = comp_random_choice_of_coords()
 
     x_coords, y_coords = convert_coords(attack_coords)
-    print(x_coords, y_coords)
     target = opponents_board.board[y_coords][x_coords]
 
     if opponents_board.name != "computer":
