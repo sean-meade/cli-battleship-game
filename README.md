@@ -33,9 +33,9 @@ Link to live site: https://cli-battleship-game.herokuapp.com/
 3. [Features](#features)
     * [Existing Features](#existing-features)
     * [Future Features](#future-features)
-4. [Testing](#testing)
-    * [User needs](#user-needs)
-    * [Challenges](#challenges)
+4. [Data Model](#data-model)
+5. [Testing](#testing)
+    * [Solved Bugs](#solved-bugs)
     * [Validator testing](#validator-testing)
     * [Unfixed bugs](#unfixed-bugs)
 5. [Deployment](#deployment)
@@ -49,6 +49,18 @@ Link to live site: https://cli-battleship-game.herokuapp.com/
 This is a command line version of the classic game battleships. The program allows the user to place their ships on their side of the board and then attack the computers ships on the computers board. The first to make 17 hits wins the game.
 
 ## How To Play
+
+CLI Battleship is a command line take on the classic battleship game.
+
+In this version, the player chooses a username and their board is created. The board has letters a to j in the y direction and number 0 to 9 in the x.
+
+It then prompts the player to place their ships on the board. There are 5 ships in total of sizes 2, 3, 3, 4, and 5. The player must choose a starting point which is done by giving coordinates which is a number and letter pairing (e.g. 3e). Then they are asked what direction they would like to place the ship (i.e. up, down, left, and right).
+
+Once all ships are placed the player will be prompted to make the first attack. This means you are attacking the computers board, which shows on the screen as blank. Using the same coordinate system as placing the ships you can attack (e.g. 8f).
+
+The computer will make its move and will continue back and forth until one player has sunk all the other players ships.
+
+If the user wins their username and time is added to the leader board and if they are in the top 3 they will show up on the opening screen.
 
 ## Features
 
@@ -75,25 +87,15 @@ This is a command line version of the classic game battleships. The program allo
 
 If I had further time on this project I would like to add 
 
+- N, S, E, W instead of up, down, left, right
+- you sunk my battleship
+- Add a weighted system where if the computer gets a hit it will attack around that space
+
+## Data Model
+
 ## Testing
 
-### User needs
-
-Here I will identify a user need and run through how this is being met by the program.
-
-1. 
-
-![]()
-
-### Challenges
-
-1. Code structure
-
-explain challenges
-
-![]()
-
-2. 
+### Solved Bugs
 
 ### Validator testing
 
