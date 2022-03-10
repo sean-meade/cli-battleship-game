@@ -133,45 +133,34 @@ If the user wins their username and time is added to the leader board and if the
     - Computer Wins
 ![Computer Wins](docs/features/12-computer-wins.png "Image showing Computer Wins")
 
-2. 
 
-* 
-
-![](docs/features/ "Image showing ")
-
-2. 
-
-* 
-
-![](docs/features/ "Image showing ")
-
-2. 
-
-* 
-
-![](docs/features/ "Image showing ")
-
-2. 
-
-* 
-
-![](docs/features/ "Image showing ")
-
-2. 
-
-* 
-
-![](docs/features/ "Image showing ")
 
 ### Future Features
 
-If I had further time on this project I would like to add 
+Given more time to develop this project here are features I would have liked to implement:
 
-- N, S, E, W instead of up, down, left, right
-- you sunk my battleship
-- Add a weighted system where if the computer gets a hit it will attack around that space
-- Make it so the computer knows where it has guessed
-- limit user name size
+1. Use N, S, E, W instead of up, down, left, right
+
+I think this would have fit in a lot better with the theme of battleship. To implement this I would change the DIRECTIONS list to N, S, E, W and change where ever there are comparisons to mirror this change.
+
+2. "You sunk my battleship!!"
+
+I would have liked to add the feature where by when a whole ship is destroyed that there is a prompt to say so. I would do this by creating a list that contained lists that hold the position of the ships on the board. For example:
+
+```
+ship_placements = [['3a', '3b', '3c'], ['0h', '1h', '2h', '3h']]
+```
+
+Where each list item in ship_placement represents a ships placement on the board. Then each time an attack is made the the game will loop through this list to check if a ship has been sunk.
+
+3. Smarter Computer
+
+I would have also liked to implement a weighted system, where by the computer after making a hit will focus around that hit until a ship has been sunk.
+
+I would have also like to have tracked the computers moves to allow the computer to make quicker moves as the game goes on.
+
+
+
 
 ## Data Model
 
@@ -191,6 +180,8 @@ In this project, the errors that I mostly came across were the following:
 2. 
 
 ### Unfixed bugs 
+
+- limit user name size
 
 
 ## Deployment
