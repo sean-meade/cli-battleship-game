@@ -66,22 +66,102 @@ If the user wins their username and time is added to the leader board and if the
 
 ### Existing features
 
-1. Structure and formatting
-* The main body of text  
+1. Opening Screen
 
-* The program code structure was developed based on the following process flow diagram, which was drafted before any of the code was written. 
+* The opening screen shows the title, leader board, and asks if you want to play or get instructions. 
 
-![flowchart]()
+![Opening Screen](docs/features/1-opening-screen.png "Image showing the opening screen")
 
-2. Title and intro
-* The title is 
-* The welcoming statement prompts the user for a name 
+2. Instructions
 
-![title-intro]()
+* The instruction screen gives the user instructions on how to play the game
 
-2. <list features>
+![Instructions](docs/features/ "Image showing Input Username")
 
-![]()
+2. Input Username
+
+* After typing p and pressing enter the user is asked for their username
+
+![Input Username](docs/features/2-username.png "Image showing Input Username field")
+
+3. Player board
+
+* The player board is the visual representation of the board, showing ships (#) and ocean (~):
+
+![Player board](docs/features/3-player-board.png "Image showing the Player board")
+
+4. Placing a ship
+
+* The player is then asked to place 5 ships of lengths 2, 3, 3, 4, and 5 in that order. By first inputting coordinates and then a direction.
+
+![Placing a ship](docs/features/4-place-ship.png "Image showing how to place a ship")
+
+5. Attacking The Computer
+
+* Once all ships are placed the player is then asked to pick attack coordinates of the opponents board (e.g. 5c)
+
+![Attacking The Computer](docs/features/6-attack-computer.png "Image showing how to attack the computer")
+
+6. Player and Computer Missing
+
+* Each time there is a miss (hitting ocean character) the following prompts are shown for player and computer
+
+    Player missing
+![Player missing](docs/features/7-player-misses.png "Image showing Player missing")
+
+    Computer missing
+![Computer missing](docs/features/8-computer-misses.png "Image showing Computer missing")
+
+
+7. Player and Computer Hitting
+
+* Each time there is a hit (hitting a ship character) the following prompts are shown for player and computer
+
+    Player Hits
+![Player Hits](docs/features/9-player-hits.png "Image showing Player Hits")
+
+    Computer Hits
+![Computer Hits](docs/features/10-computer-hits.png "Image showing Computer Hits")
+
+8. Player or Computer Winning
+
+* The following shows the screen when a player wins and the computer wins respectively
+
+    - Player Wins
+![Player Wins](docs/features/13-player-wins.png "Image showing Player Wins")
+
+    - Computer Wins
+![Computer Wins](docs/features/12-computer-wins.png "Image showing Computer Wins")
+
+2. 
+
+* 
+
+![](docs/features/ "Image showing ")
+
+2. 
+
+* 
+
+![](docs/features/ "Image showing ")
+
+2. 
+
+* 
+
+![](docs/features/ "Image showing ")
+
+2. 
+
+* 
+
+![](docs/features/ "Image showing ")
+
+2. 
+
+* 
+
+![](docs/features/ "Image showing ")
 
 ### Future Features
 
@@ -90,6 +170,8 @@ If I had further time on this project I would like to add
 - N, S, E, W instead of up, down, left, right
 - you sunk my battleship
 - Add a weighted system where if the computer gets a hit it will attack around that space
+- Make it so the computer knows where it has guessed
+- limit user name size
 
 ## Data Model
 
