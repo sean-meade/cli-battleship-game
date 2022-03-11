@@ -43,7 +43,7 @@ def attack(opponents_board):
     opponents_board.print_board()
 
     # If player is attacking the computer
-    if opponents_board.name == "computer":
+    if opponents_board.name == COMP:
         # prompt user to choose attack coordinates
         attack_coords = input(
                             colored(
@@ -74,7 +74,7 @@ A number (0-9) followed by a letter (a-j) e.g 9c""",
     x_coords, y_coords = convert_coords(attack_coords)
     target = opponents_board.board[y_coords][x_coords]
 
-    if opponents_board.name != "computer":
+    if opponents_board.name != COMP:
         name = "The Computer"
     else:
         name = "You"
@@ -95,7 +95,7 @@ A number (0-9) followed by a letter (a-j) e.g 9c""",
         opponents_board.print_board()
         sleep(2)
     else:
-        if opponents_board.name == "computer":
+        if opponents_board.name == COMP:
             print(colored(
                 "Sorry you've already attacked there try again",
                 "red"))

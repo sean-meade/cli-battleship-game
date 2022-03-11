@@ -213,14 +213,7 @@ If a player tries to attack coordinates they have already attacked the following
 
 ### Validator testing
 
-In this project, the errors that I mostly came across were the following:
-
-1. Pep8 E501 - line too long:
-* This error was rectified either by using either a backslash or quotation marks to split a long piece of text into two and separating them out onto two lines. 
-
-![]()
-
-2. 
+All python files have been ran through a PEP8 validator and 
 
 ### Unfixed bugs 
 

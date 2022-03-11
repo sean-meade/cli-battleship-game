@@ -1,7 +1,7 @@
 from datetime import datetime
 from leaderboard import add_name_and_time_to_leaderboard, print_top_players
 from termcolor import colored
-from player_board import PlayerBoard
+from player_board import PlayerBoard, COMP
 from place_ship import choose_placement_of_ship
 from utilis import attack, clear_console
 from time import sleep
@@ -75,7 +75,7 @@ def main():
     # Get username and create PlayerBoards for both player and computer
     name = input(colored("Please give your username:\n", "green"))
     # check to see if the user used the same name as computer and retry
-    if name == "computer":
+    if name == COMP:
         print(
             colored(
                 "That's the computers name sorry you'll have to pick another one",
@@ -104,7 +104,7 @@ def main():
 
         # The user and computer attack each other, print the
         # board of opponent and then change to next player
-        if current_player.name == "computer":
+        if current_player.name == COMP:
             attack(player)
             current_player = player
 
@@ -117,7 +117,7 @@ def main():
     end_time = datetime.now()
 
     # Announce if the player wins or loses
-    if current_player.name != "computer":
+    if current_player.name != COMP:
         print(colored("You lose...", "red"))
 
     # If the player wins get the time taken to win and update

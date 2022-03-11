@@ -8,6 +8,8 @@ NUMS = [str(x) for x in list(range(0, 10))]
 ROWS = COLUMNS = 10
 SHIP_CHARACTER = "#"
 
+COMP = "computer"
+
 line_spacer = f"\t|{' '*32}|"
 bottom_of_board = f"\t|{'_'*32}|"
 top_of_board = f"\t {'_'*32}"
@@ -21,7 +23,7 @@ class PlayerBoard:
     name = a string that's comp by default
     """
     # Create player board, set name, symbol and hits
-    def __init__(self, symbol, name="computer"):
+    def __init__(self, symbol, name=COMP):
         self.board = [[symbol] * COLUMNS for _ in range(ROWS)]
         self.name = name
         self.symbol = symbol
@@ -34,7 +36,7 @@ class PlayerBoard:
         """
 
         # Hides the computers ships when printed to the terminal
-        if self.name == "computer":
+        if self.name == COMP:
             # create list to hold hidden board while printing
             whole_board = [[] * COLUMNS for _ in range(ROWS)]
             # if there is a ship symbol on the comp board replace

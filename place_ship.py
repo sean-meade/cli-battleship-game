@@ -1,4 +1,4 @@
-from player_board import DIRECTIONS, LETTERS, NUMS, COLUMNS, SHIP_CHARACTER
+from player_board import DIRECTIONS, LETTERS, NUMS, COLUMNS, SHIP_CHARACTER, COMP
 from termcolor import colored
 from utilis import comp_random_choice_of_coords, convert_coords
 import random
@@ -15,7 +15,7 @@ def choose_placement_of_ship(players_board, size):
 
     # If it's the computer randomly choose placement options
     # otherwise ask the user for theirs
-    if players_board.name == "computer":
+    if players_board.name == COMP:
         starting_point = comp_random_choice_of_coords()
         direction = DIRECTIONS[random.randint(0, 3)]
     else:
@@ -61,7 +61,7 @@ def ship_wont_fit_on_board(players_board, size):
     size = int: spaces the ship takes up
     """
     # If the current player is user (not comp) then print
-    if players_board.name != "computer":
+    if players_board.name != COMP:
         print(
             colored(
                 "That ship won't fit on board that way please try again",
@@ -88,7 +88,7 @@ def check_ship_already_placed(players_board, y_coord, x_coord, size):
     # if its different from the symbol the board was created with
     # then restart placement of ship otherwise return x and y coords
     if space_symbol != players_board.symbol:
-        if players_board.name != "computer":
+        if players_board.name != COMP:
             clear_console()
             print(colored(
                 "You already have a ship there please try again",
