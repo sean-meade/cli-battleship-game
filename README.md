@@ -106,10 +106,12 @@ If the user wins their username and time is added to the leader board and if the
 
 * Each time there is a miss (hitting ocean character) the following prompts are shown for player and computer
 
-    Player missing
+    - Player missing
+
 ![Player missing](docs/features/7-player-misses.png "Image showing Player missing")
 
-    Computer missing
+    - Computer missing
+
 ![Computer missing](docs/features/8-computer-misses.png "Image showing Computer missing")
 
 
@@ -117,10 +119,12 @@ If the user wins their username and time is added to the leader board and if the
 
 * Each time there is a hit (hitting a ship character) the following prompts are shown for player and computer
 
-    Player Hits
-![Player Hits](docs/features/9-player-hits.png "Image showing Player Hits")
+    - Player Hits
+
+![Player Hits](docs/features/9-player-hits.png)
 
     Computer Hits
+
 ![Computer Hits](docs/features/10-computer-hits.png "Image showing Computer Hits")
 
 8. Player or Computer Winning
@@ -128,9 +132,11 @@ If the user wins their username and time is added to the leader board and if the
 * The following shows the screen when a player wins and the computer wins respectively
 
     - Player Wins
+
 ![Player Wins](docs/features/13-player-wins.png "Image showing Player Wins")
 
     - Computer Wins
+
 ![Computer Wins](docs/features/12-computer-wins.png "Image showing Computer Wins")
 
 
@@ -213,7 +219,11 @@ If a player tries to attack coordinates they have already attacked the following
 
 ### Unfixed bugs 
 
-- limit user name size
+For some reason the first line of the board is printing above the board every time it's printed, as shown below:
+
+![First Line of board reprinting](docs/bugs/print_bug.png)
+
+I have tried 3 different ways of writing the clearing function and also different placement of the clearing function throughout the flow of the game. Nothing has seemed to stop this bug. I have also failed to find the error in my logic, if that is what is causing this bug.
 
 ### Validator testing
 
