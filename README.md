@@ -175,15 +175,30 @@ The Google sheet could be seen as a relational database (albeit a very small one
 
 ### Solved Bugs
 
+Inputs:
+
+For all input testing the following types of inputs were tested: Numeric, alphanumeric, a mix of both, special characters, and no input at all. The player can also use uppercase and lowercase for the proper inputs. For each input if anything except the correct input is entered the following prompts are shown to guide the player.
+
 1. Choosing p or i at the opening screen:
 
-The player can use capital or lowercase letters. If anything else is input they are simply shown the same prompt to enter i or p.
+![Play or Instructions](docs/testing/p_or_i_input.png)
 
 2. Placing ship input
 
-If the user inputs anything other then the proper coordinates and direction when placing ship the prompt below is printed to the screen. The user can you uppercase or lowercase letters when inputting.
+![Use correct coords when placing ship](docs/testing/)
 
-![Use correct coords when placing ship](docs/Testing/)
+3. Attack Coordinates input
+
+![Use correct coords when placing ship](docs/testing/)
+
+4. 
+
+![](docs/testing/)
+
+2. 
+
+![](docs/testing/)
+
 
 ### Validator testing
 
