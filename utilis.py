@@ -5,6 +5,13 @@ import os
 from time import sleep
 
 
+def clear_console():
+    """
+    Used to clear the terminal of all text
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+
+
 def convert_coords(coords):
     """
     Converts the number and letter given from the user into usable ints
@@ -46,9 +53,8 @@ def attack(opponents_board):
     if opponents_board.name == COMP:
         # prompt user to choose attack coordinates
         attack_coords = input(
-                            colored(
-                                "Choose coordinates to attack e.g. 6f:\n",
-                                "green"))
+            colored("Choose coordinates to attack e.g. 6f:\n", "green")
+        )
 
         try:
             letter = attack_coords[1].lower()
@@ -60,17 +66,18 @@ def attack(opponents_board):
             # if not get player to try again
         except (ValueError, TypeError, IndexError):
             clear_console()
-            print(colored(
-                """Please choose attack coordinates.
+            print(
+                colored(
+                    """Please choose attack coordinates.
 A number (0-9) followed by a letter (a-j) e.g 9c""",
-                "red"))
+                    "red",
+                )
+            )
             sleep(2)
             attack(opponents_board)
             return
-
     else:
         attack_coords = comp_random_choice_of_coords()
-
     x_coords, y_coords = convert_coords(attack_coords)
     target = opponents_board.board[y_coords][x_coords]
 
@@ -78,7 +85,6 @@ A number (0-9) followed by a letter (a-j) e.g 9c""",
         name = "The Computer"
     else:
         name = "You"
-
     # Check if its a hit ("x"), a miss ("o"), or if
     # player has already attacked there
     if target == opponents_board.symbol:
@@ -96,15 +102,6 @@ A number (0-9) followed by a letter (a-j) e.g 9c""",
         sleep(2)
     else:
         if opponents_board.name == COMP:
-            print(colored(
-                "Sorry you've already attacked there try again",
-                "red"))
+            print(colored("Sorry you've already attacked there try again", "red"))
         sleep(1)
         attack(opponents_board)
-
-
-def clear_console():
-    """
-    Used to clear the terminal of all text
-    """
-    os.system("cls" if os.name == "nt" else "clear")
