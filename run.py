@@ -65,8 +65,6 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
 
     # User pressed on p
     clear_console()
-    main()
-
 
 def main():
     """
@@ -133,6 +131,7 @@ def main():
             "green"))
 
     input("Press any key to start again.")
-    menu()
 
-menu()
+while True:
+    menu()
+    main()
