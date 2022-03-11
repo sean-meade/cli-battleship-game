@@ -41,7 +41,7 @@ def choose_placement_of_ship(players_board, size):
         except (ValueError, IndexError):
             clear_console()
             print(colored(
-                """Please choose attack coordinates.
+                """Please use coordinates on the board.
 A number (0-9) followed by a letter (a-j) e.g 9c""",
                 "red"))
             sleep(1)
