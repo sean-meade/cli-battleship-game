@@ -107,7 +107,4 @@ def clear_console():
     """
     Used to clear the terminal of all text
     """
-    command = 'clear'
-    if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
-        command = 'cls'
-    os.system(command)
+    os.system("cls" if os.name == "nt" else "clear")

@@ -185,20 +185,31 @@ For all input testing the following types of inputs were tested: Numeric, alphan
 
 2. Placing ship input
 
-![Use correct coords when placing ship](docs/testing/)
+![Use correct coords when placing ship](docs/testing/placing_ship.png)
 
 3. Attack Coordinates input
 
-![Use correct coords when placing ship](docs/testing/)
+![Use correct coords when attacking](docs/testing/attack_coords.png)
 
-4. 
+Functional
 
-![](docs/testing/)
+1. Ship wont fit on the board
 
-2. 
+If a player tries to place a ship where it will spill out over the board the following prompt is printed
 
-![](docs/testing/)
+![Ship Wont Fit On the Board](docs/testing/ship_wont_fit.png)
 
+2. Ship already placed there
+
+If a player tries to place a ship where a ship has already been placed the following prompt is printed
+
+![Ship already placed there](docs/testing/ship_already_there.png)
+
+3. Already attacked these coordinates
+
+If a player tries to attack coordinates they have already attacked the following prompt is printed
+
+![Already attacked these coordinates](docs/testing/already_attacked_here.png)
 
 ### Validator testing
 
