@@ -1,26 +1,3 @@
-To Do:
-
-Programming:
-- Nice to have:
-    - make it so someone can use 3e or e3
-    - Add place ship function to class
-    - create unit test to periodically check the board functionality (not required for grading)
-
-README:
-- Existing features
-- Features left to implement
-- Testing: User needs
-- Testing: Challenges
-- Validator testing
-- Unfixed bugs
-- Content
-- Acknowledgements
-
-Other:
-- Nicer version of the flow chart (nice to have)
-- Maybe put button in beside the terminal rather then below it? - It would mean the whole thing would fit on the screen without scrolling. What about title and button under it on the left and the terminal on the right?
-
-
 Link to live site: https://cli-battleship-game.herokuapp.com/
 
 # Battleship
@@ -68,74 +45,74 @@ If the user wins their username and time is added to the leader board and if the
 
 1. Opening Screen
 
-* The opening screen shows the title, leader board, and asks if you want to play or get instructions. 
+The opening screen shows the title, leader board, and asks if you want to play or get instructions. 
 
 ![Opening Screen](docs/features/1-opening-screen.png "Image showing the opening screen")
 
 2. Instructions
 
-* The instruction screen gives the user instructions on how to play the game
+The instruction screen gives the user instructions on how to play the game
 
 ![Instructions](docs/features/ "Image showing Input Username")
 
 2. Input Username
 
-* After typing p and pressing enter the user is asked for their username
+After typing p and pressing enter the user is asked for their username
 
 ![Input Username](docs/features/2-username.png "Image showing Input Username field")
 
 3. Player board
 
-* The player board is the visual representation of the board, showing ships (#) and ocean (~):
+The player board is the visual representation of the board, showing ships (#) and ocean (~):
 
 ![Player board](docs/features/3-player-board.png "Image showing the Player board")
 
 4. Placing a ship
 
-* The player is then asked to place 5 ships of lengths 2, 3, 3, 4, and 5 in that order. By first inputting coordinates and then a direction.
+The player is then asked to place 5 ships of lengths 2, 3, 3, 4, and 5 in that order. By first inputting coordinates and then a direction.
 
 ![Placing a ship](docs/features/4-place-ship.png "Image showing how to place a ship")
 
 5. Attacking The Computer
 
-* Once all ships are placed the player is then asked to pick attack coordinates of the opponents board (e.g. 5c)
+Once all ships are placed the player is then asked to pick attack coordinates of the opponents board (e.g. 5c)
 
 ![Attacking The Computer](docs/features/6-attack-computer.png "Image showing how to attack the computer")
 
 6. Player and Computer Missing
 
-* Each time there is a miss (hitting ocean character) the following prompts are shown for player and computer
+Each time there is a miss (hitting ocean character) the following prompts are shown for player and computer
 
-    - Player missing
+- Player missing
 
 ![Player missing](docs/features/7-player-misses.png "Image showing Player missing")
 
-    - Computer missing
+- Computer missing
 
 ![Computer missing](docs/features/8-computer-misses.png "Image showing Computer missing")
 
 
 7. Player and Computer Hitting
 
-* Each time there is a hit (hitting a ship character) the following prompts are shown for player and computer
+Each time there is a hit (hitting a ship character) the following prompts are shown for player and computer
 
-    - Player Hits
+- Player Hits
 
 ![Player Hits](docs/features/9-player-hits.png)
 
-    Computer Hits
+- Computer Hits
 
 ![Computer Hits](docs/features/10-computer-hits.png "Image showing Computer Hits")
 
 8. Player or Computer Winning
 
-* The following shows the screen when a player wins and the computer wins respectively
+The following shows the screen when a player wins and the computer wins respectively
 
-    - Player Wins
+- Player Wins
 
 ![Player Wins](docs/features/13-player-wins.png "Image showing Player Wins")
 
-    - Computer Wins
+- Computer Wins
 
 ![Computer Wins](docs/features/12-computer-wins.png "Image showing Computer Wins")
 
