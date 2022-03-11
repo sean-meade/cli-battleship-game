@@ -14,11 +14,13 @@ def menu():
     Opening screen to the game
     """
     clear_console()
-    print("""
+    print(
+        """
 ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
 |__] |__|  |   |  |    |___ [__  |__| | |__] [__
 |__] |  |  |   |  |___ |___ ___] |  | | |    ___]\n
-""")
+"""
+    )
     print_top_players()
 
     while True:
@@ -26,11 +28,14 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
             # ask the user for an input
             instruction = input(
                 colored(
-                    "Type p to play or i for instructions and press Enter:\n",
-                    "green")).upper()
+                    "Type p to play or i for instructions and press Enter:\n", "green"
+                )
+            ).upper()
             # if its i give the instructions
             if instruction == "I":
-                print(colored("""
+                print(
+                    colored(
+                        """
     1. Enter the name you want to show on the leaderboard. You
         can use any characters you want
     2. Place your ships on the board:
@@ -48,8 +53,10 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
         computer by using the coordinates similar to placing your
         ships. An x represents a hit and an o represents a miss.
     4. The game is won when a player get 17 hits on their opponents
-        board\n""", "yellow"))
-
+        board\n""",
+                        "yellow",
+                    )
+                )
             # if its p break the while loop and start the game
             elif instruction == "P":
                 break
@@ -60,15 +67,16 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
         except (AttributeError, ValueError):
             print(
                 colored(
-                    "Please type p to play or i for instructions and press Enter",
-                    "red"))
-
+                    "Please type p to play or i for instructions and press Enter", "red"
+                )
+            )
     # User pressed on p
     clear_console()
 
+
 def main():
     """
-    Main function ran on execution of file
+    Main function ran after the player has chosen to play
     """
     # Get username and create PlayerBoards for both player and computer
     name = input(colored("Please give your username:\n", "green"))
@@ -76,11 +84,11 @@ def main():
     if name == COMP:
         print(
             colored(
-                "That's the computers name sorry you'll have to pick another one",
-                "red"))
+                "That's the computers name sorry you'll have to pick another one", "red"
+            )
+        )
         main()
         return
-
     # create boards for player and computer
     player = PlayerBoard("~", name)
     computer = PlayerBoard(" ")
@@ -91,7 +99,6 @@ def main():
         choose_placement_of_ship(player, size)
         choose_placement_of_ship(computer, size)
         clear_console()
-
     # Set current player (may randomize this)
     current_player = player
 
@@ -99,26 +106,23 @@ def main():
     start_time = datetime.now()
     # While there are still ships (or parts of ships) to
     # attack continue the attack back and forth
-    while((player.hits < sum(ship_sizes)) and (computer.hits < sum(ship_sizes))):
+    while (player.hits < sum(ship_sizes)) and (computer.hits < sum(ship_sizes)):
 
         # The user and computer attack each other, print the
         # board of opponent and then change to next player
         if current_player.name == COMP:
             attack(player)
             current_player = player
-
         else:
             attack(computer)
             sleep(2)
             current_player = computer
-
     # get the time when the game ends
     end_time = datetime.now()
 
     # Announce if the player wins or loses
     if current_player.name != COMP:
         print(colored("You lose...", "red"))
-
     # If the player wins get the time taken to win and update
     # google sheets with the name and time
     else:
@@ -126,11 +130,11 @@ def main():
         complete_time = str(time_taken)
         time_in_seconds = time_taken.total_seconds()
         add_name_and_time_to_leaderboard(name, complete_time, time_in_seconds)
-        print(colored(
-            "\tCongratulations you won!!\nYour time has been recorded",
-            "green"))
-
+        print(
+            colored("\tCongratulations you won!!\nYour time has been recorded", "green")
+        )
     input("Press any key to start again.")
+
 
 while True:
     menu()
