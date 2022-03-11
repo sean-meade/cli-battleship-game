@@ -28,7 +28,8 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
             # ask the user for an input
             instruction = input(
                 colored(
-                    "Type p to play or i for instructions and press Enter:\n", "green"
+                    "Type p to play or i for instructions and press Enter:\n",
+                    "green"
                 )
             ).upper()
             # if its i give the instructions
@@ -67,7 +68,8 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
         except (AttributeError, ValueError):
             print(
                 colored(
-                    "Please type p to play or i for instructions and press Enter", "red"
+                    "Please type p to play or i for instructions and press Enter",
+                    "red"
                 )
             )
     # User pressed on p
@@ -84,7 +86,8 @@ def main():
     if name == COMP:
         print(
             colored(
-                "That's the computers name sorry you'll have to pick another one", "red"
+                "That's the computers name sorry you'll have to pick another one",
+                "red"
             )
         )
         main()
@@ -131,7 +134,8 @@ def main():
         time_in_seconds = time_taken.total_seconds()
         add_name_and_time_to_leaderboard(name, complete_time, time_in_seconds)
         print(
-            colored("\tCongratulations you won!!\nYour time has been recorded", "green")
+            colored("\tCongratulations you won!!\nYour time has been recorded",
+                    "green")
         )
     input("Press any key to start again.")
 

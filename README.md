@@ -181,15 +181,15 @@ For all input testing the following types of inputs were tested: Numeric, alphan
 
 1. Choosing p or i at the opening screen:
 
-![Play or Instructions](docs/testing/p_or_i_input.png)
+![Play or Instructions](docs/testing/p_or_i_input.png "Play or Instructions")
 
 2. Placing ship input
 
-![Use correct coords when placing ship](docs/testing/placing_ship.png)
+![Use correct coords when placing ship](docs/testing/placing_ship.png "Use correct coords when placing ship")
 
 3. Attack Coordinates input
 
-![Use correct coords when attacking](docs/testing/attack_coords.png)
+![Use correct coords when attacking](docs/testing/attack_coords.png "Use correct coords when attacking")
 
 Functional
 
@@ -197,27 +197,69 @@ Functional
 
 If a player tries to place a ship where it will spill out over the board the following prompt is printed
 
-![Ship Wont Fit On the Board](docs/testing/ship_wont_fit.png)
+![Ship Wont Fit On the Board](docs/testing/ship_wont_fit.png "Ship Wont Fit On the Board")
 
 2. Ship already placed there
 
 If a player tries to place a ship where a ship has already been placed the following prompt is printed
 
-![Ship already placed there](docs/testing/ship_already_there.png)
+![Ship already placed there](docs/testing/ship_already_there.png "Ship already placed there")
 
 3. Already attacked these coordinates
 
 If a player tries to attack coordinates they have already attacked the following prompt is printed
 
-![Already attacked these coordinates](docs/testing/already_attacked_here.png)
-
-### Validator testing
-
-All python files have been ran through a PEP8 validator and 
+![Already attacked these coordinates](docs/testing/already_attacked_here.png "Already attacked these coordinates")
 
 ### Unfixed bugs 
 
 - limit user name size
+
+### Validator testing
+
+All Python files have been ran through a PEP8 validator at pep8online.com - The following files meet all PEP8 requirements according to this validator:
+
+- leaderboard.py
+- player_board.py
+- utilis.py
+
+Validator result for above
+![Validator result for above](docs/validating/player_board_val.png "Validator result for above")
+
+The following Python files have 'line too long' on one or more line.
+
+- place_ship.py
+- run.py
+
+Here I wish to explain my reasoning behind leaving the these as they are.
+
+The majority of errors are due to a print statement going 2 or 3 characters over. This is even after setting the print, colour, and text on different line. As this does not impede the understanding of the code I have left them as is. Below is an example of what I mean:
+
+![Line too long by 2 or 3 chars](docs/validating/run_line_too_long_print.png "Line too long by 2 or 3 chars")
+
+One print statement at line 30 in place_ship.py is 24 characters too long for PEP8. This is even after setting the print, colour, and text on different line. I have used the same reasoning as above in regards to this line. Below is an image of said line:
+
+![Line too long PEP 8 validator](docs/validating/place_ship_line_too_long_print.png "Line too long PEP 8 validator")
+
+The last two lines that don't meet PEP8 are 112 in run.py (a while loop):
+
+![While loop a character too long](docs/validating/run_line_too_long_while.png "While loop a character too long")
+
+and line 40 in place_ship.py (an if statement):
+
+![if statement 1 character too long](docs/validating/place_ship_line_too_long_if.png "if statement 1 character too long")
+
+Both are one character too long and after trying to reduce the size of both I have decided to leave as is for the sake of one character.
+
+*Here are the results from the validator for these files*:
+
+**place_ship.py:**
+
+![place_ship.py PEP8 validator result](docs/validating/place_ship_val.png "place_ship.py PEP8 validator result")
+
+**run.py**
+
+![run.py PEP8 validator result](docs/validating/run_val.png "run.py PEP8 validator result")
 
 
 ## Deployment

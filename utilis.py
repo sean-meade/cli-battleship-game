@@ -102,6 +102,7 @@ A number (0-9) followed by a letter (a-j) e.g 9c""",
         sleep(2)
     else:
         if opponents_board.name == COMP:
-            print(colored("Sorry you've already attacked there try again", "red"))
+            print(colored("Sorry you've already attacked there try again",
+                          "red"))
         sleep(1)
         attack(opponents_board)
