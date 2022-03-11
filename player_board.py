@@ -1,5 +1,8 @@
+from utilis import clear_console
+
 # Constant variables for choosing coords on the board (LETTERS) and
 # choosing a direction for placing a ship (DIRECTIONS)
+
 LETTERS = ["j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
 DIRECTIONS = ["up", "down", "right", "left"]
 NUMS = [str(x) for x in list(range(0, 10))]
@@ -31,6 +34,8 @@ class PlayerBoard:
         print the players board to the terminal with letters
         on the y axis and numbers on the x axis
         """
+
+        clear_console()
 
         # Hides the computers ships when printed to the terminal
         if self.name == "computer":
