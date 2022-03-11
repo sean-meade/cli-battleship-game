@@ -175,6 +175,16 @@ The Google sheet could be seen as a relational database (albeit a very small one
 
 ### Solved Bugs
 
+1. Choosing p or i at the opening screen:
+
+The player can use capital or lowercase letters. If anything else is input they are simply shown the same prompt to enter i or p.
+
+2. Placing ship input
+
+If the user inputs anything other then the proper coordinates and direction when placing ship the prompt below is printed to the screen. The user can you uppercase or lowercase letters when inputting.
+
+![Use correct coords when placing ship](docs/Testing/)
+
 ### Validator testing
 
 In this project, the errors that I mostly came across were the following:

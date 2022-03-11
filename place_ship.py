@@ -19,6 +19,7 @@ def choose_placement_of_ship(players_board, size):
         starting_point = comp_random_choice_of_coords()
         direction = DIRECTIONS[random.randint(0, 3)]
     else:
+        clear_console()
         players_board.print_board()
         print(f"\n The ship you're currently placing needs {size} spaces")
         starting_point = input(
