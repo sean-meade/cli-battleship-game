@@ -81,6 +81,7 @@ def main():
                 "That's the computers name sorry you'll have to pick another one",
                 "red"))
         main()
+        return
 
     # create boards for player and computer
     player = PlayerBoard("~", name)

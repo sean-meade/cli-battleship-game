@@ -1,5 +1,5 @@
 import random
-from player_board import LETTERS, NUMS, SHIP_CHARACTER
+from player_board import LETTERS, NUMS, SHIP_CHARACTER, COMP
 from termcolor import colored
 import os
 from time import sleep
