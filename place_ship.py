@@ -1,8 +1,7 @@
 from player_board import DIRECTIONS, LETTERS, NUMS, COLUMNS, SHIP_CHARACTER,COMP
 from termcolor import colored
-from utilis import comp_random_choice_of_coords, convert_coords
+from utilis import comp_random_choice_of_coords, convert_coords, clear_console
 import random
-from utilis import clear_console
 from time import sleep
 
 
