@@ -2,7 +2,7 @@ Link to live site: https://cli-battleship-game.herokuapp.com/
 
 # Battleship
 
-![responsive-layout]()
+![hosted site](docs/features/hosted-site.png)
 
 ## Table of contents
 1. [Introduction](#introduction)
@@ -23,21 +23,21 @@ Link to live site: https://cli-battleship-game.herokuapp.com/
 
 ## Introduction 
 
-This is a command line version of the classic game battleships. The program allows the user to place their ships on their side of the board and then attack the computers ships on the computers board. The first to make 17 hits wins the game.
+This is a command line version of the classic game battleships. The program allows the user to place their ships on their side of the board and then attack the computers ships on its board. The first to make 17 hits wins the game.
 
 ## How To Play
 
-CLI Battleship is a command line take on the classic battleship game.
+CLI Battleship is my take on the classic battleship game but played on the command line.
 
-In this version, the player chooses a username and their board is created. The board has letters a to j in the y direction and number 0 to 9 in the x.
+In this version, the player chooses a username and their board is created. The board has letters a to j in the y direction and number 0 to 9 in the x. A number followed by a letter make up a coordinate on the board.
 
-It then prompts the player to place their ships on the board. There are 5 ships in total of sizes 2, 3, 3, 4, and 5. The player must choose a starting point which is done by giving coordinates which is a number and letter pairing (e.g. 3e). Then they are asked what direction they would like to place the ship (i.e. up, down, left, and right).
+It then prompts the player to place their ships on the board. There are 5 ships in total of sizes 2, 3, 3, 4, and 5. The player must choose a starting point which is done by giving coordinates a number and a letter (e.g. 3e), followed by the direction they would like to place the ship (i.e. up, down, left, and right).
 
-Once all ships are placed the player will be prompted to make the first attack. This means you are attacking the computers board, which shows on the screen as blank. Using the same coordinate system as placing the ships you can attack (e.g. 8f).
+Once all ships are placed the player will be prompted to make the first attack. This means you are attacking the computers board, which shows on the screen as blank. Using the same coordinate system as placing the ships you can attack (e.g. 8f). The computer has the same size ships as the player and places tem randomly.
 
 The computer will make its move and will continue back and forth until one player has sunk all the other players ships.
 
-If the user wins their username and time is added to the leader board and if they are in the top 3 they will show up on the opening screen.
+If the user wins their username and time is added to the leader board and if they are in the top 3 they will show teh next time the opening screen is loaded.
 
 ## Features
 
@@ -53,7 +53,7 @@ The opening screen shows the title, leader board, and asks if you want to play o
 
 The instruction screen gives the user instructions on how to play the game
 
-![Instructions](docs/features/ "Image showing Input Username")
+![Instructions](docs/features/instructions.png "Image showing Input Username")
 
 2. Input Username
 
@@ -63,7 +63,7 @@ After typing p and pressing enter the user is asked for their username
 
 3. Player board
 
-The player board is the visual representation of the board, showing ships (#) and ocean (~):
+The player board is the visual representation of the board, showing ships (#) and ocean (~ for player and nothing for computer):
 
 ![Player board](docs/features/3-player-board.png "Image showing the Player board")
 
@@ -196,11 +196,17 @@ If a player tries to attack coordinates they have already attacked the following
 
 ### Unfixed bugs 
 
+1. First line of the board is printing above board
+
 For some reason the first line of the board is printing above the board every time it's printed, as shown below:
 
 ![First Line of board reprinting](docs/bugs/print_bug.png)
 
 I have tried 3 different ways of writing the clearing function and also different placement of the clearing function throughout the flow of the game. Nothing has seemed to stop this bug. I have also failed to find the error in my logic, if that is what is causing this bug.
+
+2. Computer takes longer to attack
+
+The computer currently has no way of known what moves it has made before. The less spaces left to attack the longer it can take the computer to choose valid coordinates. See Future Features section for my intended fix of this bug.
 
 ### Validator testing
 
@@ -296,8 +302,7 @@ pip3 freeze > requirements.txt
 
 21) The app should appear in a new tab on the web browser
 
-22) The link to my Heroku app is:
-<insert link>
+22) The link to my Heroku app is: https://cli-battleship-game.herokuapp.com/ 
 
 
 ## Credits 
@@ -307,10 +312,13 @@ pip3 freeze > requirements.txt
 I would like to acknowledge the below organizations:
 
 * Code institute for providing a python essentials template to work from and a terminal on Heroku to deploy my project.
-* The following site for the rules of battle ships []()
+* [The Spruce Crafts](https://www.thesprucecrafts.com/the-basic-rules-of-battleship-411069) for the rules of battle ships 
 * To create a flowchart for my project, [diagrams.net](https://app.diagrams.net/). 
 * The external python library [termcolor](https://pypi.org/project/termcolor/) to import colour to text.
 * [Pep8 online](http://pep8online.com/), for code validation checking.
+* [Black PEP8](https://black.vercel.app/) for helping format code to PEP8 standards
+* [ShareX](https://getsharex.com/) for taking screenshots
+* [Patorjk](https://patorjk.com/software/taag/#p=display&f=Cybermedium&t=Battleships) for the ASCI used for the opening title
 
 ### Acknowledgements
 
