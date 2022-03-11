@@ -292,3 +292,8 @@ I would like to acknowledge the below organizations:
 
 ### Acknowledgements
 
+* I would like to thank my mentor Reuben for his consistent good advice and guidance. 
+
+* My family for all their love and support.
+
+* My class and our Cohort Facilitator Kasia in Code Institute for making this a fun experience.
