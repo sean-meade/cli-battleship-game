@@ -159,10 +159,17 @@ I would have also liked to implement a weighted system, where by the computer af
 
 I would have also like to have tracked the computers moves to allow the computer to make quicker moves as the game goes on.
 
+4. Functions inside class
 
-
+It might not be a feature but I would have liked to add the function for placing ships into the PlayerBoard class.
 
 ## Data Model
+
+Two types of data models were used in this project. A PlayerBoard class and an Google sheet. 
+
+The PlayerBoard class holds the board, the name associated with the board, the symbol used to fill the board when created. It also holds a function used to print the current state of the board, in the case of the computer it prints a blank board and only shows hits and misses.
+
+The Google sheet could be seen as a relational database (albeit a very small one), or a visual representation of a csv file. Either way the Goggle sheet stores The username given at the start of the game and the time the user took to win the game.
 
 ## Testing
 
