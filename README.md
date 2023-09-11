@@ -1,4 +1,4 @@
-Link to live site: https://cli-battleship-game.herokuapp.com/
+[Live site](https://battleship-31i4.onrender.com/)
 
 # Battleship
 
@@ -301,9 +301,6 @@ pip3 freeze > requirements.txt
 20) Select 'Open app' on the right hand side of the screen 
 
 21) The app should appear in a new tab on the web browser
-
-22) The link to my Heroku app is: https://cli-battleship-game.herokuapp.com/ 
-
 
 ## Credits 
 
