@@ -35,14 +35,15 @@ def print_top_players():
     """
     A function that prints the 3 players with the fastest time
     """
-    # first reorders the google sheet by time
-    SHEET.worksheet("scores").sort((3, "asc"))
-    # gets values in the google sheet
-    leader_board = SHEET.worksheet("scores").get_all_values()
+    
 
     # Tries to print the leaderboard and if it cant prints the statement:
     # 'No players have played yet'
     try:
+        # first reorders the google sheet by time
+        SHEET.worksheet("scores").sort((3, "asc"))
+        # gets values in the google sheet
+        leader_board = SHEET.worksheet("scores").get_all_values()
         if leader_board[0]:
             # Leaderboard Heading
             print(" " * 15, "Leaderboard")
